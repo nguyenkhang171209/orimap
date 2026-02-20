@@ -8,9 +8,10 @@ import MajorProfile from './pages/MajorProfile';
 import AIRoadmap from './pages/AIRoadmap';
 import AIQuiz from './pages/AIQuiz';
 import CareerMentor from './pages/CareerMentor';
+import ChatBox from './components/ChatBox';
 import Dashboard from './pages/Dashboard';
 import Login from './pages/Login';
-import { BrainCircuit, Mail, Facebook, Instagram, Linkedin } from 'lucide-react';
+import { BrainCircuit, Mail, Facebook, Instagram, Linkedin, Sparkles } from 'lucide-react';
 
 const App: React.FC = () => {
   const [currentPage, setCurrentPage] = useState('home');
@@ -89,7 +90,20 @@ const App: React.FC = () => {
       case 'major-profile': return <MajorProfile majorId={pageParams?.id} onNavigate={navigate} />;
       case 'roadmap': return <AIRoadmap />;
       case 'quiz': return <AIQuiz />;
-      case 'mentor': return <CareerMentor />;
+      case 'mentor': return (
+        <div className="bg-slate-50 min-h-screen py-12 px-4">
+          <div className="max-w-4xl mx-auto mb-8 text-center">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-100 text-orange-600 text-xs font-bold mb-4">
+              <Sparkles className="w-3 h-3" /> AI POWERED MENTOR
+            </div>
+            <h1 className="text-3xl md:text-4xl font-black text-[#111E6C] mb-4">Tư vấn hướng nghiệp thông minh</h1>
+            <p className="text-slate-600 max-w-2xl mx-auto">
+              Trò chuyện cùng AI Mentor để khám phá bản thân, tìm kiếm ngành học phù hợp và xây dựng lộ trình tương lai vững chắc.
+            </p>
+          </div>
+          <ChatBox />
+        </div>
+      );
       case 'dashboard': return (
         <Dashboard 
           savedMajorIds={savedMajorIds} 

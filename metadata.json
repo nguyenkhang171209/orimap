@@ -1,6 +1,6 @@
 {
-  "name": "Remix: Save 1 of Orie Map - Tư vấn hướng nghiệp thông minh",
-  "description": "Nền tảng hỗ trợ học sinh THPT chọn ngành, trường và xây dựng lộ trình học tập cá nhân hóa bằng trí tuệ nhân tạo.",
+  "name": "OrieMap - AI Career Mentor",
+  "description": "Nền tảng hướng nghiệp thông minh sử dụng Gemini AI để tư vấn ngành học, trường học và lộ trình phát triển cho học sinh THPT Việt Nam.",
   "requestFramePermissions": [
     "camera",
     "microphone"
