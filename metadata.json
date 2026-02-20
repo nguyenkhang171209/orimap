@@ -1,0 +1,8 @@
+{
+  "name": "Remix: Save 1 of Orie Map - Tư vấn hướng nghiệp thông minh",
+  "description": "Nền tảng hỗ trợ học sinh THPT chọn ngành, trường và xây dựng lộ trình học tập cá nhân hóa bằng trí tuệ nhân tạo.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}
