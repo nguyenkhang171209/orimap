@@ -1,7 +1,8 @@
 
 import React from 'react';
 /* Added AlertCircle to imports */
-import { TrendingUp, Users, Briefcase, ChevronRight, CheckCircle2, Star, Target, GraduationCap, AlertCircle } from 'lucide-react';
+import { TrendingUp, Users, DollarSign, Briefcase, ChevronRight, CheckCircle2, Star, Target, GraduationCap, AlertCircle } from 'lucide-react';
+import { Major } from '../types';
 import { MAJORS } from '../constants';
 
 interface MajorProfileProps {
