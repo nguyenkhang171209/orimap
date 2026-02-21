@@ -224,7 +224,7 @@ const App: React.FC = () => {
       </footer>
       )}
       <ScrollToTop />
-      <ChatBox />
+      <ChatBox isFloating={true} />
     </div>
   );
 };

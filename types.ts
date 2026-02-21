@@ -29,6 +29,13 @@ export interface Message {
   text: string;
 }
 
+export interface ChatSession {
+  id: string;
+  title: string;
+  createdAt: string;
+  messages: Message[];
+}
+
 export interface UserProgress {
   major: string;
   progress: number;

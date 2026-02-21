@@ -5,7 +5,9 @@ import ReactMarkdown from 'react-markdown';
 import { motion, AnimatePresence } from 'motion/react';
 import { clsx, type ClassValue } from 'clsx';
 import { twMerge } from 'tailwind-merge';
-import { chatWithGemini, ChatMessage } from '../services/geminiService';
+import { chatWithGemini } from '../services/geminiService';
+import { Message, ChatSession } from '../types';
+import { chatStorage } from '../utils/chatStorage';
 
 /**
  * Utility for tailwind class merging
@@ -43,17 +45,33 @@ const TypingEffect: React.FC<{ text: string }> = ({ text }) => {
   );
 };
 
-const ChatBox: React.FC = () => {
-  const [messages, setMessages] = useState<ChatMessage[]>(() => {
-    const saved = localStorage.getItem('orie_chat_history');
-    return saved ? JSON.parse(saved) : [
-      { role: 'model', text: 'Chào bạn! Tôi là Orie Map AI Mentor. Tôi ở đây để giúp bạn định hướng nghề nghiệp, chọn trường và xây dựng lộ trình học tập. Bạn đang quan tâm đến lĩnh vực nào?' }
-    ];
-  });
+interface ChatBoxProps {
+  sessionId?: string | null;
+  onNewSessionCreated?: (session: ChatSession) => void;
+  onSessionUpdated?: (session: ChatSession) => void;
+}
+
+const ChatBox: React.FC<ChatBoxProps> = ({ sessionId, onNewSessionCreated, onSessionUpdated }) => {
+  const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
+
+  // Load session data when sessionId changes
+  useEffect(() => {
+    if (sessionId) {
+      const session = chatStorage.getSessionById(sessionId);
+      if (session) {
+        setMessages(session.messages);
+      }
+    } else {
+      // Default welcome message for new chat
+      setMessages([
+        { role: 'model', text: 'Chào bạn! Tôi là Orie Map AI Mentor. Tôi ở đây để giúp bạn định hướng nghề nghiệp, chọn trường và xây dựng lộ trình học tập. Bạn đang quan tâm đến lĩnh vực nào?' }
+      ]);
+    }
+  }, [sessionId]);
 
   // Auto-scroll to bottom when messages change
   useEffect(() => {
@@ -65,25 +83,43 @@ const ChatBox: React.FC = () => {
     }
   }, [messages, isLoading]);
 
-  // Save history to localStorage
-  useEffect(() => {
-    localStorage.setItem('orie_chat_history', JSON.stringify(messages));
-  }, [messages]);
-
   const handleSend = async () => {
     if (!input.trim() || isLoading) return;
 
     const userMessage = input.trim();
-    const newUserMsg: ChatMessage = { role: 'user', text: userMessage };
+    const newUserMsg: Message = { role: 'user', text: userMessage };
     
-    setMessages(prev => [...prev, newUserMsg]);
+    const updatedMessages = [...messages, newUserMsg];
+    setMessages(updatedMessages);
     setInput('');
     setIsLoading(true);
     setError(null);
 
     try {
-      const aiResponse = await chatWithGemini(messages, userMessage);
-      setMessages(prev => [...prev, { role: 'model', text: aiResponse }]);
+      const aiResponse = await chatWithGemini(updatedMessages, userMessage);
+      const finalMessages: Message[] = [...updatedMessages, { role: 'model', text: aiResponse }];
+      setMessages(finalMessages);
+
+      // Handle session persistence
+      if (sessionId) {
+        // Update existing session
+        const session = chatStorage.getSessionById(sessionId);
+        if (session) {
+          const updatedSession = { ...session, messages: finalMessages };
+          chatStorage.updateSession(sessionId, { messages: finalMessages });
+          onSessionUpdated?.(updatedSession);
+        }
+      } else {
+        // Create new session
+        const newSession: ChatSession = {
+          id: crypto.randomUUID(),
+          title: userMessage.slice(0, 30) + (userMessage.length > 30 ? '...' : ''),
+          createdAt: new Date().toISOString(),
+          messages: finalMessages
+        };
+        chatStorage.addSession(newSession);
+        onNewSessionCreated?.(newSession);
+      }
     } catch (err: any) {
       setError(err.message || "Đã xảy ra lỗi không xác định.");
       setMessages(prev => [...prev, { role: 'model', text: "⚠️ Rất tiếc, tôi đang gặp sự cố kỹ thuật. Vui lòng thử lại sau giây lát." }]);
@@ -94,9 +130,13 @@ const ChatBox: React.FC = () => {
 
   const clearHistory = () => {
     if (window.confirm("Bạn có chắc muốn xóa toàn bộ lịch sử trò chuyện?")) {
-      const initialMsg: ChatMessage = { role: 'model', text: 'Chào bạn! Tôi là Orie Map AI Mentor. Tôi ở đây để giúp bạn định hướng nghề nghiệp, chọn trường và xây dựng lộ trình học tập. Bạn đang quan tâm đến lĩnh vực nào?' };
+      const initialMsg: Message = { role: 'model', text: 'Chào bạn! Tôi là Orie Map AI Mentor. Tôi ở đây để giúp bạn định hướng nghề nghiệp, chọn trường và xây dựng lộ trình học tập. Bạn đang quan tâm đến lĩnh vực nào?' };
       setMessages([initialMsg]);
-      localStorage.removeItem('orie_chat_history');
+      if (sessionId) {
+        chatStorage.updateSession(sessionId, { messages: [initialMsg] });
+        const session = chatStorage.getSessionById(sessionId);
+        if (session) onSessionUpdated?.(session);
+      }
     }
   };
 
