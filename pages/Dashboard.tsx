@@ -2,11 +2,11 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { 
   LayoutDashboard, Compass, Calendar, BookOpen, Settings, Bell, 
-  CheckCircle, AlertTriangle, ArrowRight, UserCircle, 
+  CheckCircle, UserCircle, 
   Camera, Save, LogOut, Sparkles, Trophy, Rocket,
-  Lightbulb, Brain, Briefcase, GraduationCap, TrendingUp, BarChart3,
-  Layers, Code, Wand2, Terminal, Cpu, MonitorPlay, Search, Star,
-  Users, Zap, Lock, Bookmark, Check, Plus, Edit2, Trash2, X, Clock,
+  Lightbulb, Brain, GraduationCap, TrendingUp, BarChart3,
+  Layers, Code, Wand2, Search, Star,
+  Users, Zap, Lock, Bookmark, Check, Plus, X, Clock,
   LayoutList, CalendarDays, ChevronLeft, ChevronRight, Target, BrainCircuit
 } from 'lucide-react';
 import { MAJORS } from '../constants';

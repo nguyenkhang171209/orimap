@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
 import { QUIZ_QUESTIONS } from '../constants';
-import { BrainCircuit, ChevronRight, CheckCircle2, Trophy, ArrowRight } from 'lucide-react';
+import { BrainCircuit, ChevronRight, Trophy, ArrowRight } from 'lucide-react';
 
 const AIQuiz: React.FC = () => {
   const [currentStep, setCurrentStep] = useState(0);

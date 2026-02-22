@@ -1,8 +1,7 @@
 {
   "name": "OrieMap - AI Career Mentor",
-  "description": "Hệ thống tư vấn hướng nghiệp thông minh sử dụng AI Gemini cho học sinh THPT Việt Nam.",
+  "description": "Nền tảng AI hướng nghiệp thông minh dành cho học sinh THPT Việt Nam. Tư vấn chọn ngành, chọn trường và xây dựng lộ trình học tập cá nhân hóa.",
   "requestFramePermissions": [
-    "camera",
     "microphone"
   ]
 }
