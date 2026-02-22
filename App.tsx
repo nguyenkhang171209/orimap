@@ -2,7 +2,6 @@
 import React, { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import ScrollToTop from './components/ScrollToTop';
-import ChatBox from './components/ChatBox';
 import Home from './pages/Home';
 import SearchPage from './pages/Search';
 import MajorProfile from './pages/MajorProfile';
@@ -16,9 +15,7 @@ import { BrainCircuit, Mail, Facebook, Instagram, Linkedin } from 'lucide-react'
 const App: React.FC = () => {
   const [currentPage, setCurrentPage] = useState('home');
   const [pageParams, setPageParams] = useState<any>(null);
-  const [isLoggedIn, setIsLoggedIn] = useState(() => {
-    return localStorage.getItem('isLoggedIn') === 'true';
-  });
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [savedMajorIds, setSavedMajorIds] = useState<string[]>(() => {
     const saved = localStorage.getItem('savedMajorIds');
     return saved ? JSON.parse(saved) : [];
@@ -68,7 +65,6 @@ const App: React.FC = () => {
 
   const handleLoginSuccess = () => {
     setIsLoggedIn(true);
-    localStorage.setItem('isLoggedIn', 'true');
     const targetPage = pageParams?.redirectTo || 'dashboard';
     setCurrentPage(targetPage);
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -76,7 +72,6 @@ const App: React.FC = () => {
 
   const handleLogout = () => {
     setIsLoggedIn(false);
-    localStorage.removeItem('isLoggedIn');
     setCurrentPage('home');
   };
 
@@ -94,7 +89,7 @@ const App: React.FC = () => {
       case 'major-profile': return <MajorProfile majorId={pageParams?.id} onNavigate={navigate} />;
       case 'roadmap': return <AIRoadmap />;
       case 'quiz': return <AIQuiz />;
-      case 'mentor': return <CareerMentor />;
+      case 'mentor': return <CareerMentor onNavigate={navigate} />;
       case 'dashboard': return (
         <Dashboard 
           savedMajorIds={savedMajorIds} 
@@ -228,7 +223,6 @@ const App: React.FC = () => {
       </footer>
       )}
       <ScrollToTop />
-      <ChatBox isFloating={true} />
     </div>
   );
 };

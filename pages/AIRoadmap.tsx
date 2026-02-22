@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import { Target, Sparkles, BookOpen, Activity, CheckCircle2, Lightbulb, BarChart3 } from 'lucide-react';
+import { Target, Sparkles, BookOpen, Activity, CheckCircle2, Lightbulb, BarChart3, Trophy } from 'lucide-react';
 import { generateAIRoadmap } from '../services/gemini';
 import { Radar, RadarChart, PolarGrid, PolarAngleAxis, ResponsiveContainer, Tooltip } from 'recharts';
 

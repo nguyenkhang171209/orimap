@@ -2,7 +2,7 @@
 import React, { useState, useMemo, useEffect, useRef } from 'react';
 import { Search as SearchIcon, MapPin, GraduationCap, ArrowUpRight, Heart, SlidersHorizontal, AlertCircle, Sparkles, Loader2, Bookmark } from 'lucide-react';
 import { MAJORS } from '../constants';
-import { getMajorSuggestions } from '../services/geminiService';
+import { getMajorSuggestions } from '../services/gemini';
 
 interface SearchPageProps {
   onNavigate: (page: string, params?: any) => void;

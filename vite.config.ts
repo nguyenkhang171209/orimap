@@ -12,7 +12,7 @@ export default defineConfig(({ mode }) => {
       },
       plugins: [
         react(),
-        tailwindcss()
+        tailwindcss(),
       ],
       define: {
         'process.env.API_KEY': JSON.stringify(env.GEMINI_API_KEY),
@@ -20,7 +20,7 @@ export default defineConfig(({ mode }) => {
       },
       resolve: {
         alias: {
-          '@': path.resolve(__dirname, '.'),
+          '@': path.resolve(__dirname, './src'),
         }
       }
     };
