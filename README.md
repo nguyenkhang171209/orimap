@@ -1,130 +1,126 @@
-# 🚀 OrieMap - Nền tảng Hướng nghiệp Thông minh tích hợp AI
+# 🚀 OrieMap – AI-Powered Career Orientation Platform
+> **Empowering the next generation to navigate their academic and professional future with confidence.**
 
 [![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)](https://reactjs.org/)
 [![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white)](https://vitejs.dev/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
 [![Gemini AI](https://img.shields.io/badge/Gemini_AI-4285F4?style=for-the-badge&logo=google-gemini&logoColor=white)](https://ai.google.dev/)
-
-**OrieMap** là giải pháp công nghệ toàn diện giúp học sinh THPT (Lớp 10 - 12) xóa bỏ rào cản trong việc chọn ngành, chọn trường. Bằng cách kết hợp dữ liệu tuyển sinh thực tế và trí tuệ nhân tạo (AI), OrieMap kiến tạo một lộ trình học tập cá nhân hóa, giúp các bạn trẻ tự tin làm chủ tương lai.
-
----
-
-## 📌 Vấn đề (Problem Statement)
-
-Hiện nay, hơn **60% sinh viên Việt Nam** chọn sai ngành học hoặc cảm thấy không phù hợp sau năm nhất đại học. Nguyên nhân chủ yếu đến từ:
-- **Thiếu thông tin:** Học sinh khó tiếp cận dữ liệu điểm chuẩn, học phí và cơ hội việc làm một cách tập trung.
-- **Thiếu định hướng:** Các bài trắc nghiệm truyền thống còn rời rạc, chưa cá nhân hóa.
-- **Áp lực chọn trường:** Sự bùng nổ thông tin khiến học sinh bị "ngợp" và khó xác định lộ trình ôn thi hiệu quả.
-
-## 💡 Giải pháp (Solution)
-
-OrieMap ra đời như một **"Bản đồ sự nghiệp số"**, cung cấp hệ sinh thái khép kín:
-1. **Thấu hiểu:** Thông qua AI Quiz dựa trên khung năng lực Holland.
-2. **Khám phá:** Tra cứu thông minh hàng ngàn ngành học và trường đại học.
-3. **Định hướng:** AI Mentor tư vấn 24/7 và thiết kế lộ trình (Roadmap) cá nhân hóa.
-4. **Quản trị:** Dashboard theo dõi tiến độ học tập và lịch thi thực tế.
+[![Vercel](https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)](https://vercel.com/)
 
 ---
 
-## ✨ Các tính năng chính (Key Features)
+## 📌 Problem Statement
+Choosing a career path is one of the most significant decisions in a student's life, yet over **60% of students in Vietnam** report choosing the wrong major or feeling misaligned with their studies after their first year. 
 
-### 🤖 AI Career Mentor
-Tích hợp mô hình ngôn ngữ lớn (Gemini AI) để giải đáp mọi thắc mắc về nghề nghiệp, xu hướng thị trường lao động và đưa ra lời khuyên học tập thực tế.
+The core issues include:
+- **Information Fragmentation:** Difficulty in accessing centralized data on admission scores, tuition fees, and job market trends.
+- **Lack of Personalization:** Traditional career tests are often generic and fail to account for individual nuances.
+- **Decision Paralysis:** The sheer volume of options leads to "choice overload," causing anxiety and suboptimal decisions.
 
-### 🧩 Trắc nghiệm định hướng AI
-Hệ thống câu hỏi thông minh giúp nhận diện nhóm tính cách và thiên hướng nghề nghiệp, từ đó gợi ý các lĩnh vực phù hợp nhất.
+## 💡 Solution Overview
+**OrieMap** is a comprehensive digital ecosystem designed to bridge the gap between high school students and their ideal career paths. By leveraging **Google's Gemini AI** and real-world admission data, OrieMap provides a personalized "Career Roadmap" that evolves with the student.
 
-### 🗺️ Lộ trình tương lai (AI Roadmap)
-Tự động tạo lộ trình chi tiết từng năm (từ lớp 10 đến đại học) dựa trên mục tiêu, học lực và ngành học mơ ước của người dùng.
+Our platform transforms career orientation from a stressful guessing game into a data-driven, guided journey.
 
-### 🔍 Tra cứu Ngành & Trường
-Công cụ lọc đa năng theo khối thi, điểm chuẩn, học phí và khu vực địa lý. Tích hợp AI Insight để phân tích "tại sao ngành này phù hợp với bạn".
+## ✨ Key Features
+- **🤖 AI Career Mentor:** A 24/7 intelligent assistant providing context-aware advice on majors, universities, and career trends.
+- **🧩 AI-Driven Career Quiz:** Advanced personality and aptitude assessment to identify high-potential career matches.
+- **🗺️ Strategic AI Roadmap:** Personalized year-by-year study plans (Grade 10-12) tailored to specific university goals.
+- **🔍 Smart Major & University Search:** Multi-criteria filtering (scores, tuition, location) enhanced by AI insights on "Why this fits you."
+- **📊 Personal Dashboard:** A centralized hub to track saved majors, monitor progress, and manage upcoming exam schedules.
+- **📱 Responsive Design:** A seamless, mobile-first experience that feels like a native app on any device.
 
-### 📊 Dashboard cá nhân
-Không gian quản lý tập trung: lưu trữ ngành học yêu thích, theo dõi tiến độ mục tiêu, lịch thi sắp tới và nhận gợi ý hàng ngày từ AI.
+## 🛠️ Tech Stack
+- **Frontend:** [React 18](https://reactjs.org/) with [TypeScript](https://www.typescriptlang.org/)
+- **Build Tool:** [Vite](https://vitejs.dev/)
+- **Styling:** [Tailwind CSS](https://tailwindcss.com/)
+- **AI Engine:** [Google Gemini API](https://ai.google.dev/) (via `@google/genai`)
+- **Visualizations:** [Recharts](https://recharts.org/)
+- **Animations:** [Framer Motion](https://www.framer.com/motion/)
+- **Icons:** [Lucide React](https://lucide.dev/)
 
-### 📱 Trải nghiệm đa nền tảng
-Giao diện được tối ưu hóa hoàn hảo cho cả Desktop và Mobile, mang lại cảm giác mượt mà như một ứng dụng di động (Native App-like experience).
+## 🏗️ System Architecture Overview
+OrieMap follows a modern client-side architecture:
+1. **Presentation Layer:** React components styled with Tailwind CSS for a high-performance, responsive UI.
+2. **Logic Layer:** Custom hooks and services managing state and business logic.
+3. **AI Integration Layer:** Direct integration with Gemini API to process natural language queries and generate structured career data.
+4. **Data Layer:** Localized constants and mock data structures representing the Vietnamese educational landscape.
 
----
+## 🚀 Installation Guide
 
-## 🛠️ Công nghệ sử dụng (Tech Stack)
+### Prerequisites
+- [Node.js](https://nodejs.org/) (v18 or higher)
+- [npm](https://www.npmjs.com/) or [yarn](https://yarnpkg.com/)
 
-- **Frontend:** React 18, TypeScript, Vite.
-- **Styling:** Tailwind CSS (Mobile-first design).
-- **Icons:** Lucide React.
-- **AI Integration:** Google Gemini API (@google/genai).
-- **Animations:** Tailwind Animate, CSS Transitions.
+### Step-by-Step Setup
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/yourusername/oriemap.git
+   cd oriemap
+   ```
 
----
+2. **Install dependencies:**
+   ```bash
+   npm install
+   ```
 
-## 📂 Cấu trúc thư mục (Project Structure)
+3. **Configure Environment Variables:**
+   Create a `.env` file in the root directory:
+   ```bash
+   touch .env
+   ```
 
-```text
-oriemap/
-├── src/
-│   ├── components/     # Các UI components dùng chung (Navbar, ScrollToTop,...)
-│   ├── pages/          # Các trang chính (Home, Search, Dashboard, AIQuiz,...)
-│   ├── services/       # Xử lý logic API và tích hợp Gemini AI
-│   ├── constants.ts    # Dữ liệu tĩnh và cấu hình hệ thống
-│   ├── types.ts        # Định nghĩa TypeScript interfaces
-│   ├── App.tsx         # Component gốc và quản lý routing
-│   └── main.tsx        # Điểm đầu vào của ứng dụng
-├── public/             # Tài sản tĩnh (images, icons,...)
-├── .env.example        # File mẫu cấu hình biến môi trường
-└── package.json        # Quản lý dependencies và scripts
-```
-
----
-
-## 🚀 Hướng dẫn cài đặt (Installation & Usage)
-
-### 1. Clone dự án
-```bash
-git clone https://github.com/yourusername/oriemap.git
-cd oriemap
-```
-
-### 2. Cài đặt dependencies
-```bash
-npm install
-```
-
-### 3. Cấu hình biến môi trường
-Tạo file `.env` ở thư mục gốc và thêm API Key của bạn:
+## 🔑 Environment Variables Setup
+Add your Gemini API Key to the `.env` file:
 ```env
 VITE_GEMINI_API_KEY=your_gemini_api_key_here
 ```
+*Note: You can obtain an API key for free at [Google AI Studio](https://aistudio.google.com/).*
 
-### 4. Chạy dự án ở chế độ phát triển
+## 💻 How to Run Locally
+Start the development server:
 ```bash
 npm run dev
 ```
-Ứng dụng sẽ chạy tại: `http://localhost:3000`
+The application will be available at `http://localhost:3000`.
+
+## 🔮 Future Improvements
+- [ ] **Real-time Collaboration:** Connect students with alumni and industry professionals.
+- [ ] **Scholarship Database:** Integrated tracking for local and international scholarships.
+- [ ] **Predictive Analytics:** AI models to predict admission probability based on mock test scores.
+- [ ] **Native Mobile App:** Expanding to iOS and Android via React Native.
+
+## 🎯 Target Users
+- **High School Students (Grades 10-12):** Seeking direction and study plans.
+- **Parents:** Looking for data-backed guidance for their children.
+- **Educators:** Tools to assist in student career counseling.
+
+## 📸 Screenshots
+| Home Page | AI Mentor |
+|---|---|
+| ![Home Placeholder](https://picsum.photos/seed/home/800/450) | ![Mentor Placeholder](https://picsum.photos/seed/mentor/800/450) |
+
+| Search & Filter | AI Roadmap |
+|---|---|
+| ![Search Placeholder](https://picsum.photos/seed/search/800/450) | ![Roadmap Placeholder](https://picsum.photos/seed/roadmap/800/450) |
+
+## 🤝 Contribution Guide
+Contributions are what make the open-source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+## 📜 License
+Distributed under the MIT License. See `LICENSE` for more information.
+
+## 👤 Author
+**OrieMap Development Team**
+- **Email:** [contact@oriemap.ai](mailto:contact@oriemap.ai)
+- **Website:** [oriemap.ai](https://ais-dev-j3bfxcbwtunkl7snupwohf-59091172219.asia-southeast1.run.app)
+- **LinkedIn:** [linkedin.com/company/oriemap](https://linkedin.com)
 
 ---
-
-## 📸 Demo
-
-*(Chèn ảnh hoặc GIF demo tại đây)*
-> **Lưu ý:** Bạn có thể thêm ảnh chụp màn hình giao diện Desktop và Mobile để tăng tính thuyết phục cho Portfolio.
-
----
-
-## 🗺️ Roadmap phát triển
-
-- [ ] **Giai đoạn 1:** Hoàn thiện hệ thống dữ liệu 200+ trường đại học tại Việt Nam.
-- [ ] **Giai đoạn 2:** Tích hợp tính năng so sánh học phí và chương trình đào tạo.
-- [ ] **Giai đoạn 3:** Xây dựng cộng đồng học sinh - sinh viên (Forum) để chia sẻ kinh nghiệm thực tế.
-- [ ] **Giai đoạn 4:** Phát triển ứng dụng di động hoàn chỉnh trên iOS/Android.
-
----
-
-## 👤 Tác giả
-
-**Đội ngũ phát triển OrieMap**
-- Email: contact@oriemap.ai
-- Website: [oriemap.ai](https://ais-dev-j3bfxcbwtunkl7snupwohf-59091172219.asia-southeast1.run.app)
-
----
-⭐️ Nếu bạn thấy dự án này hữu ích, hãy tặng chúng mình 1 sao trên GitHub nhé!
+⭐️ If you find this project useful, please give it a star on GitHub!
