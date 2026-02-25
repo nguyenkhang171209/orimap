@@ -411,31 +411,271 @@ export const MAJORS: Major[] = [
 ];
 
 export const QUIZ_QUESTIONS: QuizQuestion[] = [
+  // RIASEC - Realistic
   {
     id: 1,
-    question: "Bạn thích làm việc với con số hay con người hơn?",
+    question: "Bạn thích làm việc với các công cụ, máy móc hoặc thiết bị kỹ thuật không?",
     options: [
-      { text: "Con số và dữ liệu", value: "analyst" },
-      { text: "Con người và giao tiếp", value: "social" },
-      { text: "Cả hai bằng nhau", value: "neutral" }
+      { text: "Rất thích", value: "R1", weights: { riasec: { R: 10 }, thinking: { Concrete: 5 } } },
+      { text: "Bình thường", value: "R2", weights: { riasec: { R: 5 } } },
+      { text: "Không thích", value: "R3", weights: { riasec: { R: 0 } } }
     ]
   },
   {
     id: 2,
-    question: "Khi đối mặt với một vấn đề khó, bạn thường:",
+    question: "Bạn có thích các hoạt động ngoài trời hoặc vận động tay chân không?",
     options: [
-      { text: "Phân tích logic từng bước", value: "logical" },
-      { text: "Tìm giải pháp sáng tạo mới lạ", value: "creative" },
-      { text: "Hỏi ý kiến từ người xung quanh", value: "social" }
+      { text: "Có, tôi rất năng động", value: "R4", weights: { riasec: { R: 10 }, motivation: 'Intrinsic' } },
+      { text: "Thỉnh thoảng", value: "R5", weights: { riasec: { R: 5 } } },
+      { text: "Tôi thích làm việc trong nhà hơn", value: "R6", weights: { riasec: { R: 0 } } }
+    ]
+  },
+  // RIASEC - Investigative
+  {
+    id: 3,
+    question: "Bạn có thích giải quyết các bài toán phức tạp hoặc nghiên cứu khoa học không?",
+    options: [
+      { text: "Đó là đam mê của tôi", value: "I1", weights: { riasec: { I: 10 }, thinking: { Abstract: 5, Linear: 5 } } },
+      { text: "Cũng khá thú vị", value: "I2", weights: { riasec: { I: 5 } } },
+      { text: "Tôi thấy nó khá khô khan", value: "I3", weights: { riasec: { I: 0 } } }
     ]
   },
   {
-    id: 3,
-    question: "Môi trường làm việc mơ ước của bạn là:",
+    id: 4,
+    question: "Khi gặp một hiện tượng lạ, bạn có xu hướng tìm hiểu nguyên lý đằng sau nó không?",
     options: [
-      { text: "Văn phòng hiện đại, công nghệ cao", value: "tech" },
-      { text: "Không gian mở, sáng tạo", value: "art" },
-      { text: "Nơi có nhiều tương tác xã hội", value: "business" }
+      { text: "Luôn luôn", value: "I4", weights: { riasec: { I: 10 }, thinking: { Abstract: 5 } } },
+      { text: "Đôi khi", value: "I5", weights: { riasec: { I: 5 } } },
+      { text: "Không quan tâm lắm", value: "I6", weights: { riasec: { I: 0 } } }
+    ]
+  },
+  // RIASEC - Artistic
+  {
+    id: 5,
+    question: "Bạn có thích sáng tạo nghệ thuật, viết lách hoặc thiết kế không?",
+    options: [
+      { text: "Tôi là người rất nghệ sĩ", value: "A1", weights: { riasec: { A: 10 }, thinking: { Lateral: 10 } } },
+      { text: "Tôi thích thưởng thức hơn là làm", value: "A2", weights: { riasec: { A: 5 } } },
+      { text: "Tôi thích sự thực tế hơn", value: "A3", weights: { riasec: { A: 0 } } }
+    ]
+  },
+  {
+    id: 6,
+    question: "Bạn có cảm thấy thoải mái khi làm việc trong môi trường không có quy tắc gò bó?",
+    options: [
+      { text: "Rất thoải mái", value: "A4", weights: { riasec: { A: 10 }, thinking: { Lateral: 5 }, pressure: 0.5 } },
+      { text: "Cần một chút định hướng", value: "A5", weights: { riasec: { A: 5 } } },
+      { text: "Tôi thích có quy trình rõ ràng", value: "A6", weights: { riasec: { A: 0 }, thinking: { Linear: 5 } } }
+    ]
+  },
+  // RIASEC - Social
+  {
+    id: 7,
+    question: "Bạn có thích giúp đỡ người khác hoặc làm các công việc tình nguyện không?",
+    options: [
+      { text: "Rất thích", value: "S1", weights: { riasec: { S: 10 }, motivation: 'Intrinsic' } },
+      { text: "Có, nếu có thời gian", value: "S2", weights: { riasec: { S: 5 } } },
+      { text: "Tôi thích tập trung vào việc cá nhân", value: "S3", weights: { riasec: { S: 0 } } }
+    ]
+  },
+  {
+    id: 8,
+    question: "Bạn có thấy mình là người dễ dàng thấu hiểu cảm xúc của người khác không?",
+    options: [
+      { text: "Rất nhạy bén", value: "S4", weights: { riasec: { S: 10 } } },
+      { text: "Bình thường", value: "S5", weights: { riasec: { S: 5 } } },
+      { text: "Tôi thiên về lý trí hơn", value: "S6", weights: { riasec: { S: 0 }, thinking: { Linear: 5 } } }
+    ]
+  },
+  // RIASEC - Enterprising
+  {
+    id: 9,
+    question: "Bạn có thích dẫn dắt một đội nhóm hoặc thuyết phục người khác không?",
+    options: [
+      { text: "Tôi thích làm lãnh đạo", value: "E1", weights: { riasec: { E: 10 }, pressure: 0.8, motivation: 'Extrinsic' } },
+      { text: "Tôi có thể làm nếu cần", value: "E2", weights: { riasec: { E: 5 } } },
+      { text: "Tôi thích làm thành viên hơn", value: "E3", weights: { riasec: { E: 0 } } }
+    ]
+  },
+  {
+    id: 10,
+    question: "Bạn có quan tâm đến việc kinh doanh hoặc đạt được các thành tựu về tài chính không?",
+    options: [
+      { text: "Rất quan tâm", value: "E4", weights: { riasec: { E: 10 }, motivation: 'Extrinsic' } },
+      { text: "Một chút", value: "E5", weights: { riasec: { E: 5 } } },
+      { text: "Tiền bạc không phải ưu tiên hàng đầu", value: "E6", weights: { riasec: { E: 0 }, motivation: 'Intrinsic' } }
+    ]
+  },
+  // RIASEC - Conventional
+  {
+    id: 11,
+    question: "Bạn có thích làm việc với các con số, dữ liệu và hồ sơ một cách ngăn nắp không?",
+    options: [
+      { text: "Rất thích sự ngăn nắp", value: "C1", weights: { riasec: { C: 10 }, thinking: { Linear: 10, Concrete: 5 } } },
+      { text: "Tạm được", value: "C2", weights: { riasec: { C: 5 } } },
+      { text: "Tôi thích sự ngẫu hứng hơn", value: "C3", weights: { riasec: { C: 0 }, thinking: { Lateral: 5 } } }
+    ]
+  },
+  {
+    id: 12,
+    question: "Bạn có thấy mình là người tuân thủ các quy định và hướng dẫn một cách nghiêm túc không?",
+    options: [
+      { text: "Luôn tuân thủ", value: "C4", weights: { riasec: { C: 10 }, pressure: -0.5 } },
+      { text: "Tùy trường hợp", value: "C5", weights: { riasec: { C: 5 } } },
+      { text: "Tôi thích phá vỡ các quy tắc", value: "C6", weights: { riasec: { C: 0 }, thinking: { Lateral: 5 } } }
+    ]
+  },
+  // Thinking Styles
+  {
+    id: 13,
+    question: "Khi giải quyết vấn đề, bạn thường:",
+    options: [
+      { text: "Làm theo các bước đã định sẵn", value: "T1", weights: { thinking: { Linear: 10 } } },
+      { text: "Thử nhiều cách tiếp cận khác nhau", value: "T2", weights: { thinking: { Lateral: 10 } } },
+      { text: "Nhìn vào bức tranh tổng thể", value: "T3", weights: { thinking: { Abstract: 10 } } },
+      { text: "Tập trung vào các chi tiết cụ thể", value: "T4", weights: { thinking: { Concrete: 10 } } }
+    ]
+  },
+  {
+    id: 14,
+    question: "Bạn thích học qua lý thuyết hay thực hành hơn?",
+    options: [
+      { text: "Lý thuyết trừu tượng", value: "T5", weights: { thinking: { Abstract: 10 } } },
+      { text: "Thực hành trực quan", value: "T6", weights: { thinking: { Concrete: 10 } } }
+    ]
+  },
+  // Pressure Tolerance
+  {
+    id: 15,
+    question: "Bạn cảm thấy thế nào khi phải hoàn thành công việc trong thời gian ngắn (deadline sát)?",
+    options: [
+      { text: "Càng áp lực tôi càng làm tốt", value: "P1", weights: { pressure: 1.0 } },
+      { text: "Hơi căng thẳng nhưng vẫn làm được", value: "P2", weights: { pressure: 0.5 } },
+      { text: "Rất mệt mỏi và dễ sai sót", value: "P3", weights: { pressure: -1.0 } }
+    ]
+  },
+  {
+    id: 16,
+    question: "Bạn có thích các công việc có tính cạnh tranh cao không?",
+    options: [
+      { text: "Rất thích thử thách", value: "P4", weights: { pressure: 0.8, riasec: { E: 5 } } },
+      { text: "Bình thường", value: "P5", weights: { pressure: 0.2 } },
+      { text: "Tôi thích sự ổn định", value: "P6", weights: { pressure: -0.8 } }
+    ]
+  },
+  // Motivation
+  {
+    id: 17,
+    question: "Điều gì thúc đẩy bạn làm việc chăm chỉ nhất?",
+    options: [
+      { text: "Sự công nhận và phần thưởng", value: "M1", weights: { motivation: 'Extrinsic' } },
+      { text: "Sự thỏa mãn cá nhân và đam mê", value: "M2", weights: { motivation: 'Intrinsic' } }
+    ]
+  },
+  {
+    id: 18,
+    question: "Nếu không được trả lương, bạn có tiếp tục làm công việc hiện tại không?",
+    options: [
+      { text: "Chắc chắn là có", value: "M3", weights: { motivation: 'Intrinsic' } },
+      { text: "Không, tôi cần thu nhập", value: "M4", weights: { motivation: 'Extrinsic' } }
+    ]
+  },
+  // Mixed & Contradiction Detection
+  {
+    id: 19,
+    question: "Bạn thích làm việc một mình hay theo nhóm?",
+    options: [
+      { text: "Một mình để tập trung", value: "X1", weights: { riasec: { I: 5, R: 5 } } },
+      { text: "Theo nhóm để trao đổi", value: "X2", weights: { riasec: { S: 5, E: 5 } } }
+    ]
+  },
+  {
+    id: 20,
+    question: "Bạn có thích lập kế hoạch chi tiết cho tương lai không?",
+    options: [
+      { text: "Có, mọi thứ phải rõ ràng", value: "X3", weights: { riasec: { C: 10 }, thinking: { Linear: 5 } } },
+      { text: "Không, tôi sống cho hiện tại", value: "X4", weights: { riasec: { A: 5 }, thinking: { Lateral: 5 } } }
+    ]
+  },
+  // More RIASEC to reach 30
+  {
+    id: 21,
+    question: "Bạn có thích sửa chữa các đồ vật bị hỏng trong nhà không?",
+    options: [
+      { text: "Rất thích", value: "R7", weights: { riasec: { R: 10 } } },
+      { text: "Thuê thợ cho nhanh", value: "R8", weights: { riasec: { R: 0 } } }
+    ]
+  },
+  {
+    id: 22,
+    question: "Bạn có thích đọc các tạp chí khoa học hoặc công nghệ không?",
+    options: [
+      { text: "Thường xuyên", value: "I7", weights: { riasec: { I: 10 } } },
+      { text: "Hiếm khi", value: "I8", weights: { riasec: { I: 0 } } }
+    ]
+  },
+  {
+    id: 23,
+    question: "Bạn có thích tham gia các buổi triển lãm nghệ thuật không?",
+    options: [
+      { text: "Rất thích", value: "A7", weights: { riasec: { A: 10 } } },
+      { text: "Không hứng thú lắm", value: "A8", weights: { riasec: { A: 0 } } }
+    ]
+  },
+  {
+    id: 24,
+    question: "Bạn có thích giảng dạy hoặc hướng dẫn người khác không?",
+    options: [
+      { text: "Rất thích", value: "S7", weights: { riasec: { S: 10 } } },
+      { text: "Không có kiên nhẫn", value: "S8", weights: { riasec: { S: 0 } } }
+    ]
+  },
+  {
+    id: 25,
+    question: "Bạn có thích đàm phán để có được giá tốt khi mua hàng không?",
+    options: [
+      { text: "Đó là sở trường của tôi", value: "E7", weights: { riasec: { E: 10 } } },
+      { text: "Tôi ngại mặc cả", value: "E8", weights: { riasec: { E: 0 } } }
+    ]
+  },
+  {
+    id: 26,
+    question: "Bạn có thích kiểm tra các lỗi chính tả hoặc lỗi số liệu không?",
+    options: [
+      { text: "Tôi rất kỹ tính", value: "C7", weights: { riasec: { C: 10 } } },
+      { text: "Tôi hay bỏ qua chi tiết", value: "C8", weights: { riasec: { C: 0 } } }
+    ]
+  },
+  {
+    id: 27,
+    question: "Bạn thích giải quyết vấn đề bằng cách nào?",
+    options: [
+      { text: "Dùng trực giác", value: "T7", weights: { thinking: { Lateral: 5, Abstract: 5 } } },
+      { text: "Dùng dữ liệu thực tế", value: "T8", weights: { thinking: { Linear: 5, Concrete: 10 } } }
+    ]
+  },
+  {
+    id: 28,
+    question: "Bạn có dễ bị phân tâm khi làm việc trong môi trường ồn ào không?",
+    options: [
+      { text: "Rất dễ bị ảnh hưởng", value: "P7", weights: { pressure: -0.5 } },
+      { text: "Tôi có thể tập trung tốt", value: "P8", weights: { pressure: 0.5 } }
+    ]
+  },
+  {
+    id: 29,
+    question: "Bạn thích làm việc vì mục tiêu chung hay thành tích cá nhân?",
+    options: [
+      { text: "Mục tiêu chung", value: "M5", weights: { motivation: 'Intrinsic', riasec: { S: 5 } } },
+      { text: "Thành tích cá nhân", value: "M6", weights: { motivation: 'Extrinsic', riasec: { E: 5 } } }
+    ]
+  },
+  {
+    id: 30,
+    question: "Bạn có thích sự thay đổi liên tục trong công việc không?",
+    options: [
+      { text: "Rất thích sự đổi mới", value: "X5", weights: { thinking: { Lateral: 10 }, pressure: 0.5 } },
+      { text: "Tôi thích sự ổn định", value: "X6", weights: { thinking: { Linear: 10 }, pressure: -0.5 } }
     ]
   }
 ];

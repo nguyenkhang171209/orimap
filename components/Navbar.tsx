@@ -13,6 +13,7 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate, currentPage }) => {
   const navItems = [
     { id: 'home', label: 'Trang chủ', icon: Compass },
     { id: 'search', label: 'Ngành & Trường', icon: Search },
+    { id: 'ai-engine', label: 'AI Engine', icon: BrainCircuit },
     { id: 'quiz', label: 'Trắc nghiệm AI', icon: BrainCircuit },
     { id: 'mentor', label: 'AI Mentor', icon: Users },
     { id: 'dashboard', label: 'Dashboard', icon: LayoutDashboard },

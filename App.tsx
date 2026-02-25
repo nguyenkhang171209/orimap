@@ -7,6 +7,7 @@ import SearchPage from './pages/Search';
 import MajorProfile from './pages/MajorProfile';
 import AIRoadmap from './pages/AIRoadmap';
 import AIQuiz from './pages/AIQuiz';
+import AIEngine from './pages/AIEngine';
 import CareerMentor from './pages/CareerMentor';
 import Dashboard from './pages/Dashboard';
 import Login from './pages/Login';
@@ -87,6 +88,7 @@ const App: React.FC = () => {
         />
       );
       case 'major-profile': return <MajorProfile majorId={pageParams?.id} onNavigate={navigate} />;
+      case 'ai-engine': return <AIEngine />;
       case 'roadmap': return <AIRoadmap />;
       case 'quiz': return <AIQuiz />;
       case 'mentor': return <CareerMentor onNavigate={navigate} />;

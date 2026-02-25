@@ -1,8 +1,9 @@
 
 import React, { useState, useRef, useEffect } from 'react';
 import { Send, User, Bot, History, Sparkles, Plus, Trash2, Copy, BarChart3, Map, Check, Edit2, Save, Mic, MicOff } from 'lucide-react';
-import { chatWithMentor } from '../services/gemini';
-import { Message } from '../types';
+import { MentorService } from '../services/mentorService';
+import { Message, CareerVectorProfile } from '../types';
+import { StudentProfile, SuitabilityResult } from '../services/aiEngine';
 import ReactMarkdown from 'react-markdown';
 import { motion, AnimatePresence } from 'motion/react';
 import { clsx, type ClassValue } from 'clsx';
@@ -195,7 +196,28 @@ const CareerMentor: React.FC<{ onNavigate?: (page: string) => void }> = ({ onNav
     setLoading(true);
 
     try {
-      const response = await chatWithMentor(messages, text);
+      // Get context from localStorage
+      const savedProfile = localStorage.getItem('orie_student_profile');
+      const studentProfile: StudentProfile = savedProfile ? JSON.parse(savedProfile) : {
+        grades: { 'Toán': 8.0, 'Văn': 7.5, 'Anh': 8.0 },
+        skills: {},
+        interests: [],
+        predictedExamScore: 24
+      };
+
+      const savedCareerProfile = localStorage.getItem('orie_career_profile');
+      const careerProfile: CareerVectorProfile | undefined = savedCareerProfile ? JSON.parse(savedCareerProfile) : undefined;
+
+      const savedSuitability = localStorage.getItem('orie_last_suitability');
+      const suitabilityData = savedSuitability ? JSON.parse(savedSuitability) : undefined;
+
+      const response = await MentorService.generateResponse(newMessages, {
+        studentProfile,
+        careerProfile,
+        suitability: suitabilityData?.result,
+        targetMajor: suitabilityData?.major
+      });
+
       const aiMsg: Message = { role: 'model', text: response };
       const finalMessages = [...newMessages, aiMsg];
       setMessages(finalMessages);
@@ -321,7 +343,28 @@ const CareerMentor: React.FC<{ onNavigate?: (page: string) => void }> = ({ onNav
     setLoading(true);
 
     try {
-      const response = await chatWithMentor(messages, input);
+      // Get context from localStorage
+      const savedProfile = localStorage.getItem('orie_student_profile');
+      const studentProfile: StudentProfile = savedProfile ? JSON.parse(savedProfile) : {
+        grades: { 'Toán': 8.0, 'Văn': 7.5, 'Anh': 8.0 },
+        skills: {},
+        interests: [],
+        predictedExamScore: 24
+      };
+
+      const savedCareerProfile = localStorage.getItem('orie_career_profile');
+      const careerProfile: CareerVectorProfile | undefined = savedCareerProfile ? JSON.parse(savedCareerProfile) : undefined;
+
+      const savedSuitability = localStorage.getItem('orie_last_suitability');
+      const suitabilityData = savedSuitability ? JSON.parse(savedSuitability) : undefined;
+
+      const response = await MentorService.generateResponse(newMessages, {
+        studentProfile,
+        careerProfile,
+        suitability: suitabilityData?.result,
+        targetMajor: suitabilityData?.major
+      });
+
       const aiMsg: Message = { role: 'model', text: response };
       const finalMessages = [...newMessages, aiMsg];
       setMessages(finalMessages);

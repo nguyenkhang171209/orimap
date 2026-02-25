@@ -18,10 +18,32 @@ export interface Major {
   timeline?: { year: number; content: string }[];
 }
 
+export interface QuizOption {
+  text: string;
+  value: string;
+  weights: {
+    riasec?: Partial<Record<'R' | 'I' | 'A' | 'S' | 'E' | 'C', number>>;
+    thinking?: Partial<Record<'Linear' | 'Lateral' | 'Abstract' | 'Concrete', number>>;
+    pressure?: number; // -1 to 1
+    motivation?: 'Intrinsic' | 'Extrinsic';
+  };
+}
+
 export interface QuizQuestion {
   id: number;
   question: string;
-  options: { text: string; value: string }[];
+  options: QuizOption[];
+}
+
+export interface CareerVectorProfile {
+  riasec: Record<'R' | 'I' | 'A' | 'S' | 'E' | 'C', number>;
+  thinkingStyle: string;
+  pressureTolerance: number;
+  motivationType: string;
+  strengths: string[];
+  weaknesses: string[];
+  environment: string;
+  contradictions: string[];
 }
 
 export interface Message {
