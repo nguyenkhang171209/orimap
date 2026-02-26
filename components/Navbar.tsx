@@ -55,12 +55,12 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate, currentPage }) => {
               className="flex items-center gap-2 md:gap-3 cursor-pointer shrink-0 lg:-ml-4 transition-all hover:opacity-80 active:scale-95" 
               onClick={() => handleNavigate('home')}
             >
-              <div className="w-8 h-8 md:w-11 md:h-11 lg:w-13 lg:h-13 rounded-lg md:rounded-2xl flex items-center justify-center shadow-lg shadow-blue-900/10 shrink-0" style={{ backgroundColor: '#111E6C' }}>
+              <div className="w-8 h-8 md:w-11 md:h-11 lg:w-13 lg:h-13 rounded-lg md:rounded-2xl flex items-center justify-center shadow-lg shadow-primary/10 shrink-0 bg-primary">
                 <BrainCircuit className="text-white w-5 h-5 md:w-6 md:h-6 lg:w-7 lg:h-7" />
               </div>
               <span className="text-lg md:text-2xl lg:text-3xl font-[800] tracking-tighter whitespace-nowrap">
-                <span style={{ color: '#2F4FA8' }}>Orie</span>
-                <span style={{ color: '#FF8C00' }}> Map</span>
+                <span className="text-primary">Orie</span>
+                <span className="text-secondary"> Map</span>
               </span>
             </div>
 
@@ -73,11 +73,11 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate, currentPage }) => {
                     onClick={() => onNavigate(item.id)}
                     className={`flex items-center gap-2 px-4 lg:px-6 py-2 rounded-xl transition-all duration-300 relative font-bold text-sm ${
                       currentPage === item.id 
-                        ? 'text-[#FF8C00] bg-white shadow-[0_4px_12px_rgba(0,0,0,0.05)] scale-100' 
-                        : 'text-slate-500 hover:text-slate-900 hover:bg-white/40'
+                        ? 'text-secondary bg-white shadow-[0_4px_12px_rgba(0,0,0,0.05)] scale-100' 
+                        : 'text-muted-text hover:text-slate-900 hover:bg-white/40'
                     }`}
                   >
-                    <item.icon className={`w-4.5 h-4.5 shrink-0 transition-colors ${currentPage === item.id ? 'text-[#FF8C00]' : 'text-slate-400'}`} />
+                    <item.icon className={`w-4.5 h-4.5 shrink-0 transition-colors ${currentPage === item.id ? 'text-secondary' : 'text-slate-400'}`} />
                     <span className="whitespace-nowrap">{item.label}</span>
                   </button>
                 ))}
@@ -88,8 +88,7 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate, currentPage }) => {
             <div className="hidden md:flex items-center justify-end">
               <button 
                 onClick={() => onNavigate('roadmap')}
-                style={{ backgroundColor: '#111E6C' }}
-                className="text-white px-6 lg:px-10 py-3 rounded-full font-[800] hover:shadow-2xl hover:shadow-blue-900/20 transition-all active:scale-95 text-sm lg:text-[16px] whitespace-nowrap"
+                className="bg-primary text-white px-6 lg:px-10 py-3 rounded-full font-[800] hover:bg-primary-light hover:shadow-2xl hover:shadow-primary/20 transition-all active:scale-95 text-sm lg:text-[16px] whitespace-nowrap"
               >
                 Bắt đầu ngay
               </button>
@@ -128,12 +127,12 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate, currentPage }) => {
         >
           <div className="p-6 border-b border-slate-100 flex items-center justify-between">
             <div className="flex items-center gap-2">
-              <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ backgroundColor: '#111E6C' }}>
+              <div className="w-8 h-8 rounded-lg flex items-center justify-center bg-primary">
                 <BrainCircuit className="text-white w-5 h-5" />
               </div>
               <span className="text-xl font-extrabold tracking-tighter">
-                <span style={{ color: '#2F4FA8' }}>Orie</span>
-                <span style={{ color: '#FF8C00' }}> Map</span>
+                <span className="text-primary">Orie</span>
+                <span className="text-secondary"> Map</span>
               </span>
             </div>
             <button onClick={closeMenu} className="p-2 text-slate-400 hover:text-slate-600 transition-colors">
@@ -148,7 +147,7 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate, currentPage }) => {
                 onClick={() => handleNavigate(item.id)}
                 className={`w-full flex items-center justify-between px-4 py-3.5 rounded-2xl transition-all duration-200 group ${
                   currentPage === item.id 
-                    ? 'bg-blue-50 text-[#2F4FA8]' 
+                    ? 'bg-primary/10 text-primary' 
                     : 'text-slate-600 hover:bg-slate-50'
                 }`}
               >
@@ -156,7 +155,7 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate, currentPage }) => {
                   <div className={`w-10 h-10 rounded-xl flex items-center justify-center transition-colors ${
                     currentPage === item.id ? 'bg-white shadow-sm' : 'bg-slate-100 group-hover:bg-white'
                   }`}>
-                    <item.icon className={`w-5 h-5 ${currentPage === item.id ? 'text-[#2F4FA8]' : 'text-slate-400 group-hover:text-slate-600'}`} />
+                    <item.icon className={`w-5 h-5 ${currentPage === item.id ? 'text-primary' : 'text-slate-400 group-hover:text-slate-600'}`} />
                   </div>
                   <span className="font-bold">{item.label}</span>
                 </div>
@@ -168,8 +167,7 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate, currentPage }) => {
           <div className="p-6 border-t border-slate-100">
             <button 
               onClick={() => handleNavigate('roadmap')}
-              style={{ backgroundColor: '#111E6C' }}
-              className="w-full text-white py-4 rounded-2xl font-extrabold shadow-lg shadow-blue-900/20 active:scale-[0.98] transition-all flex items-center justify-center gap-2"
+              className="w-full bg-primary text-white py-4 rounded-2xl font-extrabold shadow-lg shadow-primary/20 hover:bg-primary-light active:scale-[0.98] transition-all flex items-center justify-center gap-2"
             >
               <span>Bắt đầu ngay</span>
               <ChevronRight className="w-4 h-4" />

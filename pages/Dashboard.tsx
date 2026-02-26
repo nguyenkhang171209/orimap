@@ -2,8 +2,8 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { 
   LayoutDashboard, Compass, Calendar, BookOpen, Settings, Bell, 
-  CheckCircle, UserCircle, 
-  Camera, Save, LogOut, Sparkles, Trophy, Rocket,
+  CheckCircle, CircleUser, 
+  Camera, Save, Sparkles, Trophy, Rocket,
   Lightbulb, Brain, GraduationCap, TrendingUp, BarChart3,
   Layers, Code, Wand2, Search, Star,
   Users, Zap, Lock, Bookmark, Check, Plus, X, Clock,
@@ -22,7 +22,7 @@ interface Exam {
 
 interface DashboardProps {
   savedMajorIds: string[];
-  userProfile: {
+  studentProfile: {
     name: string;
     email: string;
     school: string;
@@ -30,11 +30,10 @@ interface DashboardProps {
     avatar: string;
   };
   onUpdateProfile: (profile: any) => void;
-  onLogout: () => void;
   onNavigate: (page: string, params?: any) => void;
 }
 
-const Dashboard: React.FC<DashboardProps> = ({ savedMajorIds, userProfile, onUpdateProfile, onLogout, onNavigate }) => {
+const Dashboard: React.FC<DashboardProps> = ({ savedMajorIds, studentProfile, onUpdateProfile, onNavigate }) => {
   const [activeTab, setActiveTab] = useState<'overview' | 'settings' | 'upgrade' | 'exams' | 'majors' | 'roadmap'>('overview');
   const [examViewMode, setExamViewMode] = useState<'list' | 'calendar'>('list');
   const [calendarDate, setCalendarDate] = useState(new Date());
@@ -65,24 +64,24 @@ const Dashboard: React.FC<DashboardProps> = ({ savedMajorIds, userProfile, onUpd
   }, [exams]);
 
   // Form Profile State
-  const [editProfile, setEditProfile] = useState(userProfile);
+  const [editProfile, setEditProfile] = useState(studentProfile);
   const [isSaving, setIsSaving] = useState(false);
   const [showSaveToast, setShowSaveToast] = useState(false);
 
   useEffect(() => {
-    setEditProfile(userProfile);
-  }, [userProfile]);
+    setEditProfile(studentProfile);
+  }, [studentProfile]);
 
-  const userSavedMajors = MAJORS.filter(m => savedMajorIds.includes(m.id));
+  const studentSavedMajors = MAJORS.filter(m => savedMajorIds.includes(m.id));
   const [selectedMajorId, setSelectedMajorId] = useState<string>('');
 
   useEffect(() => {
-    if (userSavedMajors.length > 0 && (!selectedMajorId || !savedMajorIds.includes(selectedMajorId))) {
-      setSelectedMajorId(userSavedMajors[0].id);
+    if (studentSavedMajors.length > 0 && (!selectedMajorId || !savedMajorIds.includes(selectedMajorId))) {
+      setSelectedMajorId(studentSavedMajors[0].id);
     }
-  }, [savedMajorIds, userSavedMajors, selectedMajorId]);
+  }, [savedMajorIds, studentSavedMajors, selectedMajorId]);
 
-  const selectedMajor = MAJORS.find(m => m.id === selectedMajorId) || (userSavedMajors.length > 0 ? userSavedMajors[0] : null);
+  const selectedMajor = MAJORS.find(m => m.id === selectedMajorId) || (studentSavedMajors.length > 0 ? studentSavedMajors[0] : null);
 
   const handleSaveProfile = () => {
     setIsSaving(true);
@@ -200,7 +199,7 @@ const Dashboard: React.FC<DashboardProps> = ({ savedMajorIds, userProfile, onUpd
             <div className="flex justify-between items-start mb-6 md:mb-8">
               <div>
                 <h3 className="text-base md:text-lg font-bold text-gray-900 mb-1">Lộ trình học tập cá nhân</h3>
-                <p className="text-xs md:text-sm text-gray-500">Dựa trên mục tiêu: {userSavedMajors.length > 0 ? userSavedMajors[0].majorName : 'Chưa chọn ngành'}</p>
+                <p className="text-xs md:text-sm text-gray-500">Dựa trên mục tiêu: {studentSavedMajors.length > 0 ? studentSavedMajors[0].majorName : 'Chưa chọn ngành'}</p>
               </div>
               <button className="text-indigo-600 text-xs md:text-sm font-bold hover:underline">Xem chi tiết</button>
             </div>
@@ -590,10 +589,10 @@ const Dashboard: React.FC<DashboardProps> = ({ savedMajorIds, userProfile, onUpd
   const renderMajors = () => (
     <div className="flex flex-col xl:flex-row gap-10 animate-in fade-in slide-in-from-bottom-4 duration-500 pb-20">
       <div className="xl:w-1/3 space-y-6">
-        <h3 className="text-xl font-[900] text-slate-900 px-4">Ngành đã lưu ({userSavedMajors.length})</h3>
+        <h3 className="text-xl font-[900] text-slate-900 px-4">Ngành đã lưu ({studentSavedMajors.length})</h3>
         <div className="space-y-4 max-h-[600px] overflow-y-auto custom-scrollbar pr-2">
-          {userSavedMajors.length > 0 ? (
-            userSavedMajors.map((major) => (
+          {studentSavedMajors.length > 0 ? (
+            studentSavedMajors.map((major) => (
               <button
                 key={major.id}
                 onClick={() => setSelectedMajorId(major.id)}
@@ -876,7 +875,7 @@ const Dashboard: React.FC<DashboardProps> = ({ savedMajorIds, userProfile, onUpd
       <section className="bg-white p-10 rounded-[2.5rem] border border-slate-200/60 shadow-sm space-y-8">
         <div className="flex items-center gap-4">
           <div className="w-12 h-12 rounded-2xl bg-indigo-50 text-[#4F46E5] flex items-center justify-center">
-            <UserCircle className="w-7 h-7" />
+            <CircleUser className="w-7 h-7" />
           </div>
           <h3 className="text-2xl font-[900] text-slate-900">Thông tin cá nhân</h3>
         </div>
@@ -945,12 +944,6 @@ const Dashboard: React.FC<DashboardProps> = ({ savedMajorIds, userProfile, onUpd
           )}
           {isSaving ? 'Đang lưu...' : 'Lưu tất cả thay đổi'}
         </button>
-        <button 
-          onClick={onLogout}
-          className="px-10 py-5 bg-red-50 text-red-600 rounded-[2rem] font-black text-lg flex items-center justify-center gap-3 hover:bg-red-100 transition-all"
-        >
-          <LogOut className="w-6 h-6" /> Đăng xuất
-        </button>
       </div>
     </div>
   );
@@ -1009,14 +1002,6 @@ const Dashboard: React.FC<DashboardProps> = ({ savedMajorIds, userProfile, onUpd
               Nâng cấp ngay
             </button>
           </div>
-          
-          <button 
-            onClick={onLogout}
-            className="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold text-gray-500 hover:bg-red-50 hover:text-red-600 transition-all"
-          >
-            <LogOut className="w-5 h-5" />
-            Đăng xuất
-          </button>
         </div>
       </aside>
 
@@ -1027,7 +1012,7 @@ const Dashboard: React.FC<DashboardProps> = ({ savedMajorIds, userProfile, onUpd
           <header className="lg:hidden flex justify-between items-center mb-6">
             <div className="space-y-0.5">
               <h1 className="text-xl font-bold text-gray-900">Dashboard</h1>
-              <p className="text-[10px] font-medium text-gray-500">Chào mừng, {userProfile.name}</p>
+              <p className="text-[10px] font-medium text-gray-500">Chào mừng, {studentProfile.name}</p>
             </div>
             <button className="p-2.5 bg-white rounded-xl border border-gray-200 shadow-sm relative">
               <Bell className="w-5 h-5 text-gray-500" />
@@ -1046,7 +1031,7 @@ const Dashboard: React.FC<DashboardProps> = ({ savedMajorIds, userProfile, onUpd
                  activeTab === 'roadmap' ? 'Chiến lược tương lai 🚀' : 'Nâng cấp trải nghiệm ✨'}
               </h1>
               <p className="text-sm text-gray-500 font-medium">
-                {activeTab === 'overview' ? 'Chào mừng quay trở lại, ' + userProfile.name : 
+                {activeTab === 'overview' ? 'Chào mừng quay trở lại, ' + studentProfile.name : 
                  activeTab === 'settings' ? 'Quản lý tài khoản và bảo mật của bạn' : 
                  activeTab === 'exams' ? 'Tự tin chinh phục mọi thử thách phía trước' : 
                  activeTab === 'majors' ? 'Nơi những lựa chọn trở thành tương lai rực rỡ' : 
@@ -1056,9 +1041,9 @@ const Dashboard: React.FC<DashboardProps> = ({ savedMajorIds, userProfile, onUpd
             <div className="flex items-center gap-4">
               <div className="flex items-center gap-3 px-4 py-2 bg-white rounded-2xl border border-gray-200 shadow-sm">
                 <div className="w-8 h-8 rounded-full bg-indigo-100 flex items-center justify-center text-indigo-600 font-bold text-xs">
-                  {userProfile.name.charAt(0)}
+                  {studentProfile.name.charAt(0)}
                 </div>
-                <span className="text-sm font-bold text-gray-700">{userProfile.name}</span>
+                <span className="text-sm font-bold text-gray-700">{studentProfile.name}</span>
               </div>
               <button className="p-3 bg-white rounded-2xl border border-gray-200 text-gray-400 hover:text-indigo-600 transition-all shadow-sm relative">
                 <Bell className="w-6 h-6" />

@@ -90,7 +90,7 @@ The application will be available at `http://localhost:3000`.
 - [ ] **Predictive Analytics:** AI models to predict admission probability based on mock test scores.
 - [ ] **Native Mobile App:** Expanding to iOS and Android via React Native.
 
-## 🎯 Target Users
+## 🎯 Target Students
 - **High School Students (Grades 10-12):** Seeking direction and study plans.
 - **Parents:** Looking for data-backed guidance for their children.
 - **Educators:** Tools to assist in student career counseling.

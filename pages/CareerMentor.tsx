@@ -1,6 +1,6 @@
 
 import React, { useState, useRef, useEffect } from 'react';
-import { Send, User, Bot, History, Sparkles, Plus, Trash2, Copy, BarChart3, Map, Check, Edit2, Save, Mic, MicOff } from 'lucide-react';
+import { Send, CircleUser, Bot, History, Sparkles, Plus, Trash2, Copy, BarChart3, Map, Check, Edit2, Save, Mic, MicOff } from 'lucide-react';
 import { MentorService } from '../services/mentorService';
 import { Message, CareerVectorProfile } from '../types';
 import { StudentProfile, SuitabilityResult } from '../services/aiEngine';
@@ -189,8 +189,8 @@ const CareerMentor: React.FC<{ onNavigate?: (page: string) => void }> = ({ onNav
   const handleSendFromVoice = async (text: string) => {
     if (!text.trim() || loading) return;
     
-    const userMsg: Message = { role: 'user', text };
-    const newMessages = [...messages, userMsg];
+    const studentMsg: Message = { role: 'student', text };
+    const newMessages = [...messages, studentMsg];
     setMessages(newMessages);
     setInput('');
     setLoading(true);
@@ -336,8 +336,8 @@ const CareerMentor: React.FC<{ onNavigate?: (page: string) => void }> = ({ onNav
   const handleSend = async () => {
     if (!input.trim() || loading) return;
     
-    const userMsg: Message = { role: 'user', text: input };
-    const newMessages = [...messages, userMsg];
+    const studentMsg: Message = { role: 'student', text: input };
+    const newMessages = [...messages, studentMsg];
     setMessages(newMessages);
     setInput('');
     setLoading(true);
@@ -563,25 +563,25 @@ const CareerMentor: React.FC<{ onNavigate?: (page: string) => void }> = ({ onNav
                   transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
                   className={cn(
                     "flex w-full",
-                    msg.role === 'user' ? 'justify-end' : 'justify-start'
+                    msg.role === 'student' ? 'justify-end' : 'justify-start'
                   )}
                 >
                   <div className={cn(
                     "flex gap-3 md:gap-4 max-w-[92%] md:max-w-[85%]",
-                    msg.role === 'user' ? 'flex-row-reverse' : 'flex-row'
+                    msg.role === 'student' ? 'flex-row-reverse' : 'flex-row'
                   )}>
                     <div className={cn(
                       "w-9 h-9 md:w-11 md:h-11 rounded-2xl flex items-center justify-center shrink-0 shadow-md transition-transform hover:scale-110",
-                      msg.role === 'user' 
+                      msg.role === 'student' 
                         ? 'bg-gradient-to-br from-indigo-500 to-purple-600 text-white' 
                         : 'bg-white text-indigo-500 border border-white/50'
                     )}>
-                      {msg.role === 'user' ? <User className="w-5 h-5 md:w-6 md:h-6" /> : <Bot className="w-5 h-5 md:w-6 md:h-6" />}
+                      {msg.role === 'student' ? <CircleUser className="w-5 h-5 md:w-6 md:h-6" /> : <Bot className="w-5 h-5 md:w-6 md:h-6" />}
                     </div>
                     
                     <div className={cn(
                       "flex flex-col gap-4 w-full",
-                      msg.role === 'user' ? 'items-end' : 'items-start'
+                      msg.role === 'student' ? 'items-end' : 'items-start'
                     )}>
                       {structuredData ? (
                         <div className="space-y-4 w-full">
@@ -639,7 +639,7 @@ const CareerMentor: React.FC<{ onNavigate?: (page: string) => void }> = ({ onNav
                       ) : (
                         <div className={cn(
                           "p-4 md:p-6 rounded-[2rem] shadow-sm text-sm md:text-base leading-relaxed",
-                          msg.role === 'user' 
+                          msg.role === 'student' 
                             ? 'bg-gradient-to-br from-indigo-500 to-purple-600 text-white rounded-tr-none' 
                             : 'bg-white/80 backdrop-blur-sm border border-white/50 text-slate-800 rounded-tl-none'
                         )}>

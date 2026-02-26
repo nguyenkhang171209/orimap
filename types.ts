@@ -47,7 +47,7 @@ export interface CareerVectorProfile {
 }
 
 export interface Message {
-  role: 'user' | 'model';
+  role: 'student' | 'model';
   text: string;
 }
 
@@ -58,7 +58,7 @@ export interface ChatSession {
   messages: Message[];
 }
 
-export interface UserProgress {
+export interface StudentProgress {
   major: string;
   progress: number;
   checklist: { task: string; done: boolean }[];

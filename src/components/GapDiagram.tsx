@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { Database, BrainCircuit, UserCheck, ArrowRight, Sparkles, Info, Search, Target } from 'lucide-react';
+import { Database, BrainCircuit, CheckCircle2, ArrowRight, Sparkles, Info, Search, Target } from 'lucide-react';
 
 const GapDiagram: React.FC = () => {
   return (
@@ -95,7 +95,7 @@ const GapDiagram: React.FC = () => {
             className="relative z-10 flex flex-col items-center group w-full lg:w-1/3"
           >
             <div className="w-24 h-24 md:w-32 md:h-32 bg-[#FF8C00] rounded-[2.5rem] flex items-center justify-center shadow-xl group-hover:scale-110 transition-transform duration-500">
-              <UserCheck className="w-10 h-10 md:w-14 md:h-14 text-white" />
+              <CheckCircle2 className="w-10 h-10 md:w-14 md:h-14 text-white" />
               <motion.div 
                 animate={{ scale: [1, 1.2, 1], opacity: [0.5, 1, 0.5] }}
                 transition={{ repeat: Infinity, duration: 3 }}
