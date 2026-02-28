@@ -86,7 +86,7 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col selection:bg-orange-100 selection:text-orange-900">
+    <div className="min-h-screen flex flex-col selection:bg-secondary-100 selection:text-secondary-dark">
       <div className={currentPage === 'dashboard' ? 'lg:hidden' : ''}>
         <Navbar onNavigate={navigate} currentPage={currentPage} />
       </div>

@@ -11,7 +11,8 @@ import {
   BarChart3,
   GraduationCap,
   Sparkles,
-  Info
+  Info,
+  ShieldAlert
 } from 'lucide-react';
 import { OriMapAIEngine, StudentProfile, SuitabilityResult } from '../services/aiEngine';
 import { MAJORS } from '../constants';
@@ -83,11 +84,11 @@ const AIEngine: React.FC = () => {
   return (
     <div className="max-w-6xl mx-auto px-4 py-12 md:py-20">
       <div className="text-center mb-12">
-        <div className="inline-flex items-center gap-2 px-4 py-2 bg-indigo-50 text-indigo-600 rounded-full text-xs font-black uppercase tracking-widest mb-4">
+        <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary-50 text-primary rounded-full text-xs font-black uppercase tracking-widest mb-4">
           <BrainCircuit className="w-4 h-4" /> Ori-map Multivariate AI Engine
         </div>
         <h1 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tighter mb-4">
-          Phân tích <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-500">Độ phù hợp</span>
+          Phân tích <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">Độ phù hợp</span>
         </h1>
         <p className="text-slate-500 max-w-2xl mx-auto font-medium">
           Thuật toán đa biến độc quyền giúp bạn đánh giá chính xác khả năng thành công trong ngành học mơ ước.
@@ -103,11 +104,11 @@ const AIEngine: React.FC = () => {
                 <div 
                   key={s}
                   className={`flex items-center gap-4 p-4 rounded-2xl transition-all ${
-                    step === s ? 'bg-indigo-50 border-indigo-100 border' : 'opacity-50'
+                    step === s ? 'bg-primary-50 border-primary-100 border' : 'opacity-50'
                   }`}
                 >
                   <div className={`w-8 h-8 rounded-full flex items-center justify-center font-black ${
-                    step === s ? 'bg-indigo-600 text-white' : 'bg-slate-100 text-slate-400'
+                    step === s ? 'bg-primary text-white' : 'bg-slate-100 text-slate-400'
                   }`}>
                     {s}
                   </div>
@@ -129,7 +130,7 @@ const AIEngine: React.FC = () => {
                 className="bg-white rounded-[2.5rem] border border-slate-200 p-8 shadow-sm space-y-6"
               >
                 <h3 className="font-black text-slate-900 uppercase tracking-widest text-xs flex items-center gap-2">
-                  <GraduationCap className="w-4 h-4 text-indigo-600" /> Điểm trung bình (GPA)
+                  <GraduationCap className="w-4 h-4 text-primary" /> Điểm trung bình (GPA)
                 </h3>
                 <div className="grid grid-cols-2 gap-4">
                   {Object.entries(profile.grades).map(([subject, grade]) => (
@@ -138,7 +139,7 @@ const AIEngine: React.FC = () => {
                       <input 
                         type="number" 
                         step="0.1"
-                        className="w-full p-3 rounded-xl border border-slate-100 bg-slate-50 font-bold text-slate-700 outline-none focus:ring-2 ring-indigo-50"
+                        className="w-full p-3 rounded-xl border border-slate-100 bg-slate-50 font-bold text-slate-700 outline-none focus:ring-2 ring-primary-50"
                         value={grade}
                         onChange={(e) => setProfile({
                           ...profile, 
@@ -150,7 +151,7 @@ const AIEngine: React.FC = () => {
                 </div>
                 <button 
                   onClick={() => setStep(2)}
-                  className="w-full py-4 bg-slate-900 text-white rounded-2xl font-black text-xs uppercase tracking-widest hover:bg-indigo-600 transition-all flex items-center justify-center gap-2"
+                  className="w-full py-4 bg-slate-900 text-white rounded-2xl font-black text-xs uppercase tracking-widest hover:bg-primary transition-all flex items-center justify-center gap-2"
                 >
                   Tiếp theo <ChevronRight className="w-4 h-4" />
                 </button>
@@ -166,7 +167,7 @@ const AIEngine: React.FC = () => {
                 className="bg-white rounded-[2.5rem] border border-slate-200 p-8 shadow-sm space-y-6"
               >
                 <h3 className="font-black text-slate-900 uppercase tracking-widest text-xs flex items-center gap-2">
-                  <Target className="w-4 h-4 text-indigo-600" /> Chọn ngành muốn phân tích
+                  <Target className="w-4 h-4 text-primary" /> Chọn ngành muốn phân tích
                 </h3>
                 <div className="space-y-3 max-h-[400px] overflow-y-auto pr-2 custom-scrollbar">
                   {MAJORS.map(major => (
@@ -175,8 +176,8 @@ const AIEngine: React.FC = () => {
                       onClick={() => setSelectedMajorId(major.id)}
                       className={`w-full text-left p-4 rounded-2xl border transition-all ${
                         selectedMajorId === major.id 
-                          ? 'border-indigo-500 bg-indigo-50/50 ring-2 ring-indigo-50' 
-                          : 'border-slate-100 hover:border-indigo-200'
+                          ? 'border-primary-500 bg-primary-50/50 ring-2 ring-primary-50' 
+                          : 'border-slate-100 hover:border-primary-200'
                       }`}
                     >
                       <p className="font-bold text-slate-800 text-sm">{major.majorName}</p>
@@ -193,7 +194,7 @@ const AIEngine: React.FC = () => {
                   </button>
                   <button 
                     onClick={handleAnalyze}
-                    className="flex-[2] py-4 bg-indigo-600 text-white rounded-2xl font-black text-xs uppercase tracking-widest hover:bg-indigo-700 transition-all shadow-lg shadow-indigo-600/20 flex items-center justify-center gap-2"
+                    className="flex-[2] py-4 bg-primary text-white rounded-2xl font-black text-xs uppercase tracking-widest hover:bg-primary-dark transition-all shadow-lg shadow-primary/20 flex items-center justify-center gap-2"
                   >
                     Phân tích ngay <Sparkles className="w-4 h-4" />
                   </button>
@@ -215,10 +216,10 @@ const AIEngine: React.FC = () => {
               >
                 {/* Score Hero */}
                 <div className="bg-white rounded-[3rem] border border-slate-200 p-10 shadow-xl relative overflow-hidden">
-                  <div className="absolute top-0 right-0 w-64 h-64 bg-indigo-50 rounded-full -translate-y-1/2 translate-x-1/2 opacity-50 blur-3xl"></div>
+                  <div className="absolute top-0 right-0 w-64 h-64 bg-primary-50 rounded-full -translate-y-1/2 translate-x-1/2 opacity-50 blur-3xl"></div>
                   
                   <div className="relative z-10 flex flex-col md:flex-row items-center gap-10">
-                    <div className="relative w-48 h-48 flex items-center justify-center">
+                    <div className="relative w-48 h-48 flex items-center justify-center shrink-0">
                       <svg className="w-full h-full transform -rotate-90">
                         <circle
                           cx="96" cy="96" r="88"
@@ -233,20 +234,20 @@ const AIEngine: React.FC = () => {
                           strokeDasharray={552.9}
                           strokeDashoffset={552.9 - (552.9 * result.totalScore) / 100}
                           strokeLinecap="round"
-                          className="text-indigo-600 transition-all duration-1000 ease-out"
+                          className="text-primary transition-all duration-1000 ease-out"
                         />
                       </svg>
                       <div className="absolute inset-0 flex flex-col items-center justify-center">
-                        <span className="text-5xl font-black text-slate-900">{result.totalScore}</span>
-                        <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Điểm phù hợp</span>
+                        <span className="text-5xl font-black text-slate-900">{result.totalScore}%</span>
+                        <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest text-center px-4 mt-1">Độ phù hợp nghề nghiệp</span>
                       </div>
                     </div>
 
                     <div className="flex-1 space-y-4 text-center md:text-left">
                       <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-black uppercase tracking-widest ${
                         result.category === 'Phù hợp cao' ? 'bg-green-50 text-green-600' :
-                        result.category === 'Phù hợp tiềm năng' ? 'bg-blue-50 text-blue-600' :
-                        'bg-orange-50 text-orange-600'
+                        result.category === 'Phù hợp tiềm năng' ? 'bg-primary-50 text-primary' :
+                        'bg-amber-50 text-amber-600'
                       }`}>
                         {result.category === 'Phù hợp cao' ? <CheckCircle2 className="w-4 h-4" /> :
                          result.category === 'Phù hợp tiềm năng' ? <TrendingUp className="w-4 h-4" /> :
@@ -256,10 +257,82 @@ const AIEngine: React.FC = () => {
                       <h2 className="text-3xl font-black text-slate-900 leading-tight">
                         {MAJORS.find(m => m.id === selectedMajorId)?.majorName}
                       </h2>
-                      <p className="text-slate-500 font-medium leading-relaxed italic">
-                        "{result.explanation}"
-                      </p>
+                      <div className="bg-slate-50 p-4 rounded-2xl border border-slate-100 relative">
+                        <div className="absolute -top-3 -left-3 w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-sm border border-slate-100 text-primary">
+                          <Sparkles className="w-4 h-4" />
+                        </div>
+                        <p className="text-slate-600 font-medium leading-relaxed text-sm">
+                          <span className="font-bold text-slate-900">Orie AI Giải thích:</span> {result.explanation}
+                        </p>
+                      </div>
                     </div>
+                  </div>
+                </div>
+
+                {/* Predictive Intelligence Cards */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                  {/* Admission Probability */}
+                  <div className="bg-white rounded-[2.5rem] border border-slate-200 p-8 shadow-sm relative overflow-hidden group hover:border-primary-100 transition-colors">
+                    <div className="absolute top-0 right-0 p-6 opacity-5 pointer-events-none group-hover:scale-110 transition-transform duration-500">
+                      <Target className="w-32 h-32 text-primary" />
+                    </div>
+                    <h3 className="text-xs font-black text-slate-400 uppercase tracking-[0.2em] mb-6 flex items-center gap-2">
+                      <Target className="w-4 h-4 text-primary" /> Xác suất trúng tuyển
+                    </h3>
+                    <div className="flex items-end gap-4 mb-4">
+                      <span className="text-6xl font-black text-slate-900 leading-none tracking-tighter">{result.admissionProbability}%</span>
+                      <span className={`px-3 py-1.5 rounded-xl text-[10px] font-black uppercase tracking-widest mb-1.5 border ${
+                        result.admissionProbability >= 70 ? 'bg-green-50 text-green-600 border-green-100' :
+                        result.admissionProbability >= 40 ? 'bg-amber-50 text-amber-600 border-amber-100' :
+                        'bg-red-50 text-red-600 border-red-100'
+                      }`}>
+                        {result.admissionProbability >= 70 ? 'An toàn' : result.admissionProbability >= 40 ? 'Cạnh tranh' : 'Rủi ro cao'}
+                      </span>
+                    </div>
+                    <p className="text-sm font-medium text-slate-500 relative z-10">
+                      Dựa trên điểm dự kiến <strong className="text-slate-700">{profile.predictedExamScore}</strong> so với điểm chuẩn lịch sử của ngành <strong className="text-slate-700">{MAJORS.find(m => m.id === selectedMajorId)?.majorName}</strong>.
+                    </p>
+                    
+                    {/* Progress Bar */}
+                    <div className="w-full h-2 bg-slate-100 rounded-full mt-6 overflow-hidden">
+                      <div 
+                        className={`h-full rounded-full transition-all duration-1000 ${
+                          result.admissionProbability >= 70 ? 'bg-green-500' :
+                          result.admissionProbability >= 40 ? 'bg-amber-500' :
+                          'bg-red-500'
+                        }`}
+                        style={{ width: `${result.admissionProbability}%` }}
+                      />
+                    </div>
+                  </div>
+
+                  {/* Risk Analysis */}
+                  <div className="bg-white rounded-[2.5rem] border border-slate-200 p-8 shadow-sm relative overflow-hidden group hover:border-red-100 transition-colors">
+                    <div className="absolute top-0 right-0 p-6 opacity-5 pointer-events-none group-hover:scale-110 transition-transform duration-500">
+                      <ShieldAlert className="w-32 h-32 text-red-500" />
+                    </div>
+                    <h3 className="text-xs font-black text-slate-400 uppercase tracking-[0.2em] mb-6 flex items-center gap-2">
+                      <ShieldAlert className="w-4 h-4 text-red-500" /> Phân tích rủi ro
+                    </h3>
+                    <div className="mb-6">
+                      <span className={`inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-black uppercase tracking-widest border ${
+                        result.riskAnalysis.level === 'Thấp' ? 'bg-green-50 text-green-600 border-green-100' :
+                        result.riskAnalysis.level === 'Trung bình' ? 'bg-amber-50 text-amber-600 border-amber-100' :
+                        'bg-red-50 text-red-600 border-red-100'
+                      }`}>
+                        Mức độ rủi ro: {result.riskAnalysis.level}
+                      </span>
+                    </div>
+                    <ul className="space-y-3 relative z-10">
+                      {result.riskAnalysis.factors.map((factor, idx) => (
+                        <li key={idx} className="text-sm font-medium text-slate-600 flex items-start gap-3 bg-slate-50 p-3 rounded-xl border border-slate-100">
+                          <span className={`mt-0.5 shrink-0 ${result.riskAnalysis.level === 'Thấp' ? 'text-green-500' : 'text-red-400'}`}>
+                            {result.riskAnalysis.level === 'Thấp' ? <CheckCircle2 className="w-4 h-4" /> : <AlertTriangle className="w-4 h-4" />}
+                          </span> 
+                          {factor}
+                        </li>
+                      ))}
+                    </ul>
                   </div>
                 </div>
 
@@ -268,7 +341,7 @@ const AIEngine: React.FC = () => {
                   {/* Radar Chart */}
                   <div className="bg-white rounded-[2.5rem] border border-slate-200 p-8 shadow-sm">
                     <h3 className="text-xs font-black text-slate-400 uppercase tracking-[0.2em] mb-8 flex items-center gap-2">
-                      <BarChart3 className="w-4 h-4 text-indigo-600" /> Biểu đồ đa biến
+                      <BarChart3 className="w-4 h-4 text-primary" /> Biểu đồ đa biến
                     </h3>
                     <div className="h-64 w-full">
                       <ResponsiveContainer width="100%" height="100%">
@@ -293,7 +366,7 @@ const AIEngine: React.FC = () => {
                   {/* Bar Chart Breakdown */}
                   <div className="bg-white rounded-[2.5rem] border border-slate-200 p-8 shadow-sm">
                     <h3 className="text-xs font-black text-slate-400 uppercase tracking-[0.2em] mb-8 flex items-center gap-2">
-                      <TrendingUp className="w-4 h-4 text-indigo-600" /> Chi tiết thành phần
+                      <TrendingUp className="w-4 h-4 text-primary" /> Chi tiết thành phần
                     </h3>
                     <div className="h-64 w-full">
                       <ResponsiveContainer width="100%" height="100%">
@@ -320,20 +393,20 @@ const AIEngine: React.FC = () => {
                   <div className="absolute top-0 right-0 p-8 opacity-10">
                     <Info className="w-32 h-32" />
                   </div>
-                  <h3 className="text-xs font-black uppercase tracking-[0.3em] mb-6 flex items-center gap-3 text-indigo-400">
+                  <h3 className="text-xs font-black uppercase tracking-[0.3em] mb-6 flex items-center gap-3 text-primary-light">
                     <BrainCircuit className="w-5 h-5" /> Explainable AI (XAI) Logic
                   </h3>
                   <div className="space-y-6 relative z-10">
                     <p className="text-slate-400 text-sm leading-relaxed">
-                      Hệ thống Ori-map sử dụng mô hình tính điểm đa biến <code className="text-indigo-300 font-mono">C = w1A + w2S + w3I + w4T + w5R</code> để đảm bảo tính khách quan:
+                      Hệ thống Ori-map sử dụng mô hình tính điểm đa biến <code className="text-primary-light font-mono">C = w1A + w2S + w3I + w4T + w5R</code> để đảm bảo tính khách quan:
                     </p>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div className="p-4 rounded-2xl bg-white/5 border border-white/10">
-                        <p className="text-xs font-black text-indigo-400 mb-1">A - Academic (35%)</p>
+                        <p className="text-xs font-black text-primary-light mb-1">A - Academic (35%)</p>
                         <p className="text-[10px] text-slate-400">Đánh giá sự tương thích giữa điểm GPA của bạn và khối thi yêu cầu.</p>
                       </div>
                       <div className="p-4 rounded-2xl bg-white/5 border border-white/10">
-                        <p className="text-xs font-black text-purple-400 mb-1">S - Skills (20%)</p>
+                        <p className="text-xs font-black text-secondary-light mb-1">S - Skills (20%)</p>
                         <p className="text-[10px] text-slate-400">So sánh bộ kỹ năng hiện tại với yêu cầu đặc thù của ngành học.</p>
                       </div>
                       <div className="p-4 rounded-2xl bg-white/5 border border-white/10">
@@ -341,7 +414,7 @@ const AIEngine: React.FC = () => {
                         <p className="text-[10px] text-slate-400">Phân tích mức độ đam mê dựa trên từ khóa sở thích và mô tả ngành.</p>
                       </div>
                       <div className="p-4 rounded-2xl bg-white/5 border border-white/10">
-                        <p className="text-xs font-black text-orange-400 mb-1">T - Trend (15%)</p>
+                        <p className="text-xs font-black text-amber-400 mb-1">T - Trend (15%)</p>
                         <p className="text-[10px] text-slate-400">Tính toán dựa trên nhu cầu thị trường lao động và rủi ro thay thế bởi AI.</p>
                       </div>
                     </div>

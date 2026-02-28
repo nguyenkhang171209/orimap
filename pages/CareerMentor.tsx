@@ -100,7 +100,7 @@ const TypewriterText: React.FC<{ text: string; speed?: number; onComplete?: () =
       ul: ({ children }) => <ul className="list-disc ml-4 mb-3 space-y-1">{children}</ul>,
       ol: ({ children }) => <ol className="list-decimal ml-4 mb-3 space-y-1">{children}</ol>,
       li: ({ children }) => <li className="pl-1">{children}</li>,
-      strong: ({ children }) => <strong className="font-bold text-indigo-600 dark:text-indigo-400">{children}</strong>,
+      strong: ({ children }) => <strong className="font-bold text-primary dark:text-primary-light">{children}</strong>,
       h3: ({ children }) => <h3 className="text-lg font-bold mb-2 text-slate-900">{children}</h3>,
     }}
   >
@@ -111,7 +111,7 @@ const TypewriterText: React.FC<{ text: string; speed?: number; onComplete?: () =
 const SkeletonLoader: React.FC = () => (
   <div className="flex gap-3 md:gap-4 justify-start w-full max-w-[85%]">
     <div className="w-9 h-9 md:w-11 md:h-11 rounded-2xl bg-white border border-white/50 flex items-center justify-center shadow-sm shrink-0">
-      <Bot className="w-5 h-5 md:w-6 md:h-6 text-indigo-200 animate-pulse" />
+      <Bot className="w-5 h-5 md:w-6 md:h-6 text-primary-light animate-pulse" />
     </div>
     <div className="flex-1 space-y-3 p-6 bg-white/40 backdrop-blur-sm border border-white/50 rounded-[2rem] rounded-tl-none">
       <div className="h-4 bg-slate-200 rounded-full w-3/4 animate-pulse"></div>
@@ -198,7 +198,7 @@ const CareerMentor: React.FC<{ onNavigate?: (page: string) => void }> = ({ onNav
     try {
       // Get context from localStorage
       const savedProfile = localStorage.getItem('orie_student_profile');
-      const studentProfile: any = savedProfile ? JSON.parse(savedProfile) : {
+      const studentProfile: StudentProfile = savedProfile ? JSON.parse(savedProfile) : {
         grades: { 'Toán': 8.0, 'Văn': 7.5, 'Anh': 8.0 },
         skills: {},
         interests: [],
@@ -268,9 +268,9 @@ const CareerMentor: React.FC<{ onNavigate?: (page: string) => void }> = ({ onNav
     const cleanText = text.replace(/<chart_data>[\s\S]*?<\/chart_data>/g, '').trim();
     
     const sections = [
-      { key: '🎯 Phù hợp vì', icon: '🎯', color: 'from-blue-500/10 to-blue-600/10', border: 'border-blue-200/50' },
-      { key: '📚 Lộ trình học', icon: '📚', color: 'from-purple-500/10 to-purple-600/10', border: 'border-purple-200/50' },
-      { key: '💼 Cơ hội nghề nghiệp', icon: '💼', color: 'from-orange-500/10 to-orange-600/10', border: 'border-orange-200/50' }
+      { key: '🎯 Phù hợp vì', icon: '🎯', color: 'from-primary-50/50 to-primary-100/50', border: 'border-primary-200/50' },
+      { key: '📚 Lộ trình học', icon: '📚', color: 'from-secondary-50/50 to-secondary-100/50', border: 'border-secondary-200/50' },
+      { key: '💼 Cơ hội nghề nghiệp', icon: '💼', color: 'from-primary-50/50 to-secondary-50/50', border: 'border-primary-200/50' }
     ];
 
     const result: { title: string; content: string; icon: string; color: string; border: string }[] = [];
@@ -345,7 +345,7 @@ const CareerMentor: React.FC<{ onNavigate?: (page: string) => void }> = ({ onNav
     try {
       // Get context from localStorage
       const savedProfile = localStorage.getItem('orie_student_profile');
-      const studentProfile: any = savedProfile ? JSON.parse(savedProfile) : {
+      const studentProfile: StudentProfile = savedProfile ? JSON.parse(savedProfile) : {
         grades: { 'Toán': 8.0, 'Văn': 7.5, 'Anh': 8.0 },
         skills: {},
         interests: [],
@@ -436,13 +436,13 @@ const CareerMentor: React.FC<{ onNavigate?: (page: string) => void }> = ({ onNav
   };
 
   return (
-    <div className="flex h-[calc(100vh-56px)] md:h-[calc(100vh-4rem)] bg-gradient-to-br from-blue-50/50 via-purple-50/50 to-orange-50/50 overflow-hidden">
+    <div className="flex h-[calc(100vh-56px)] md:h-[calc(100vh-4rem)] bg-gradient-to-br from-primary-50/50 via-secondary-50/50 to-primary-50/50 overflow-hidden">
       {/* Sidebar History - Desktop Only */}
       <aside className="w-80 border-r border-white/40 bg-white/30 backdrop-blur-xl hidden lg:flex flex-col">
         <div className="p-6">
           <button 
             onClick={clearChat}
-            className="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-indigo-500 to-purple-500 text-white py-4 rounded-2xl font-bold shadow-lg shadow-indigo-200 hover:scale-[1.02] active:scale-[0.98] transition-all"
+            className="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-primary to-secondary text-white py-4 rounded-2xl font-bold shadow-lg shadow-primary/20 hover:scale-[1.02] active:scale-[0.98] transition-all"
           >
             <Plus className="w-5 h-5" /> Đoạn chat mới
           </button>
@@ -466,13 +466,13 @@ const CareerMentor: React.FC<{ onNavigate?: (page: string) => void }> = ({ onNav
                 className={cn(
                   "group relative w-full text-left px-4 py-4 rounded-2xl text-sm font-medium transition-all flex items-center gap-3 cursor-pointer",
                   currentSessionId === session.id 
-                    ? "bg-indigo-500 text-white shadow-lg shadow-indigo-100" 
+                    ? "bg-primary text-white shadow-lg shadow-primary-100" 
                     : "text-slate-600 hover:bg-white/60 hover:shadow-sm"
                 )}
               >
                 <div className={cn(
                   "w-2 h-2 rounded-full shrink-0",
-                  currentSessionId === session.id ? "bg-white" : "bg-indigo-400"
+                  currentSessionId === session.id ? "bg-white" : "bg-primary-light"
                 )} />
                 
                 {renamingId === session.id ? (
@@ -521,7 +521,7 @@ const CareerMentor: React.FC<{ onNavigate?: (page: string) => void }> = ({ onNav
 
         <div className="p-6 border-t border-white/40">
           <div className="bg-white/40 rounded-2xl p-4 flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-orange-400 to-pink-500 flex items-center justify-center text-white font-bold">
+            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-secondary to-primary flex items-center justify-center text-white font-bold">
               MA
             </div>
             <div>
@@ -537,7 +537,7 @@ const CareerMentor: React.FC<{ onNavigate?: (page: string) => void }> = ({ onNav
         {/* Header - Mobile Only */}
         <div className="lg:hidden p-4 border-b border-white/40 bg-white/30 backdrop-blur-md flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-lg bg-indigo-500 flex items-center justify-center text-white">
+            <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center text-white">
               <Sparkles className="w-4 h-4" />
             </div>
             <span className="font-bold text-slate-800">Career Mentor</span>
@@ -573,8 +573,8 @@ const CareerMentor: React.FC<{ onNavigate?: (page: string) => void }> = ({ onNav
                     <div className={cn(
                       "w-9 h-9 md:w-11 md:h-11 rounded-2xl flex items-center justify-center shrink-0 shadow-md transition-transform hover:scale-110",
                       msg.role === 'student' 
-                        ? 'bg-gradient-to-br from-indigo-500 to-purple-600 text-white' 
-                        : 'bg-white text-indigo-500 border border-white/50'
+                        ? 'bg-gradient-to-br from-primary to-secondary text-white' 
+                        : 'bg-white text-primary border border-white/50'
                     )}>
                       {msg.role === 'student' ? <CircleUser className="w-5 h-5 md:w-6 md:h-6" /> : <Bot className="w-5 h-5 md:w-6 md:h-6" />}
                     </div>
@@ -640,7 +640,7 @@ const CareerMentor: React.FC<{ onNavigate?: (page: string) => void }> = ({ onNav
                         <div className={cn(
                           "p-4 md:p-6 rounded-[2rem] shadow-sm text-sm md:text-base leading-relaxed",
                           msg.role === 'student' 
-                            ? 'bg-gradient-to-br from-indigo-500 to-purple-600 text-white rounded-tr-none' 
+                            ? 'bg-gradient-to-br from-primary to-secondary text-white rounded-tr-none' 
                             : 'bg-white/80 backdrop-blur-sm border border-white/50 text-slate-800 rounded-tl-none'
                         )}>
                           <div className="prose prose-sm md:prose-base max-w-none prose-slate">
@@ -653,7 +653,7 @@ const CareerMentor: React.FC<{ onNavigate?: (page: string) => void }> = ({ onNav
                                   ul: ({ children }) => <ul className="list-disc ml-4 mb-3 space-y-1">{children}</ul>,
                                   ol: ({ children }) => <ol className="list-decimal ml-4 mb-3 space-y-1">{children}</ol>,
                                   li: ({ children }) => <li className="pl-1">{children}</li>,
-                                  strong: ({ children }) => <strong className="font-bold text-indigo-600 dark:text-indigo-400">{children}</strong>,
+                                  strong: ({ children }) => <strong className="font-bold text-primary dark:text-primary-light">{children}</strong>,
                                   h3: ({ children }) => <h3 className="text-lg font-bold mb-2 text-slate-900">{children}</h3>,
                                 }}
                               >
@@ -669,7 +669,7 @@ const CareerMentor: React.FC<{ onNavigate?: (page: string) => void }> = ({ onNav
                         <div className="flex flex-wrap gap-2 mt-2">
                           <button 
                             onClick={() => copyToClipboard(msg.text, i)}
-                            className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/50 border border-white/60 text-[10px] font-bold text-slate-500 hover:bg-white hover:text-indigo-600 transition-all shadow-sm"
+                            className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/50 border border-white/60 text-[10px] font-bold text-slate-500 hover:bg-white hover:text-primary transition-all shadow-sm"
                           >
                             {copiedId === i ? <Check className="w-3 h-3" /> : <Copy className="w-3 h-3" />}
                             {copiedId === i ? 'Đã chép' : 'Sao chép'}
@@ -681,8 +681,8 @@ const CareerMentor: React.FC<{ onNavigate?: (page: string) => void }> = ({ onNav
                               className={cn(
                                 "flex items-center gap-1.5 px-3 py-1.5 rounded-full border transition-all shadow-sm text-[10px] font-bold",
                                 activeCharts[i] 
-                                  ? "bg-indigo-500 border-indigo-500 text-white" 
-                                  : "bg-white/50 border-white/60 text-slate-500 hover:bg-white hover:text-indigo-600"
+                                  ? "bg-primary border-primary text-white" 
+                                  : "bg-white/50 border-white/60 text-slate-500 hover:bg-white hover:text-primary"
                               )}
                             >
                               <BarChart3 className="w-3 h-3" />
@@ -692,7 +692,7 @@ const CareerMentor: React.FC<{ onNavigate?: (page: string) => void }> = ({ onNav
 
                           <button 
                             onClick={() => onNavigate?.('roadmap')}
-                            className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/50 border border-white/60 text-[10px] font-bold text-slate-500 hover:bg-white hover:text-indigo-600 transition-all shadow-sm"
+                            className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/50 border border-white/60 text-[10px] font-bold text-slate-500 hover:bg-white hover:text-primary transition-all shadow-sm"
                           >
                             <Map className="w-3 h-3" />
                             Xem lộ trình chi tiết
@@ -726,12 +726,12 @@ const CareerMentor: React.FC<{ onNavigate?: (page: string) => void }> = ({ onNav
         {/* Input area */}
         <div className="p-4 md:p-8 bg-gradient-to-t from-white/80 via-white/40 to-transparent backdrop-blur-sm">
           <div className="max-w-4xl mx-auto relative group">
-            <div className="absolute -inset-1 bg-gradient-to-r from-blue-400 via-purple-400 to-orange-400 rounded-[2.5rem] blur opacity-20 group-focus-within:opacity-40 transition-opacity duration-500"></div>
+            <div className="absolute -inset-1 bg-gradient-to-r from-primary-light via-secondary-light to-primary-light rounded-[2.5rem] blur opacity-20 group-focus-within:opacity-40 transition-opacity duration-500"></div>
             <div className="relative flex items-center">
               <textarea
                 rows={1}
                 className={cn(
-                  "w-full p-4 md:p-6 pr-28 md:pr-36 rounded-[2rem] border border-white/60 bg-white/90 shadow-xl focus:ring-4 ring-indigo-100/50 outline-none resize-none text-slate-800 text-sm md:text-lg placeholder:text-slate-400 transition-all",
+                  "w-full p-4 md:p-6 pr-28 md:pr-36 rounded-[2rem] border border-white/60 bg-white/90 shadow-xl focus:ring-4 ring-primary-100/50 outline-none resize-none text-slate-800 text-sm md:text-lg placeholder:text-slate-400 transition-all",
                   isListening && "border-red-400 ring-red-100"
                 )}
                 placeholder={isListening ? "Đang nghe..." : "Hỏi Orie bất cứ điều gì về sự nghiệp..."}
@@ -746,7 +746,7 @@ const CareerMentor: React.FC<{ onNavigate?: (page: string) => void }> = ({ onNav
                     "w-10 h-10 md:w-14 md:h-14 rounded-2xl flex items-center justify-center transition-all shadow-md",
                     isListening 
                       ? "bg-red-500 text-white animate-pulse" 
-                      : "bg-white text-slate-400 hover:text-indigo-500 hover:bg-slate-50"
+                      : "bg-white text-slate-400 hover:text-primary hover:bg-slate-50"
                   )}
                   title="Voice-to-Text"
                 >
@@ -755,7 +755,7 @@ const CareerMentor: React.FC<{ onNavigate?: (page: string) => void }> = ({ onNav
                 <button 
                   onClick={handleSend}
                   disabled={loading || !input.trim()}
-                  className="w-10 h-10 md:w-14 md:h-14 bg-gradient-to-br from-indigo-500 to-purple-600 text-white rounded-2xl flex items-center justify-center hover:scale-105 active:scale-95 transition-all disabled:opacity-40 disabled:hover:scale-100 shadow-lg shadow-indigo-200"
+                  className="w-10 h-10 md:w-14 md:h-14 bg-gradient-to-br from-primary to-secondary text-white rounded-2xl flex items-center justify-center hover:scale-105 active:scale-95 transition-all disabled:opacity-40 disabled:hover:scale-100 shadow-lg shadow-primary/20"
                 >
                   <Send className="w-5 h-5 md:w-6 md:h-6" />
                 </button>
@@ -773,7 +773,7 @@ const CareerMentor: React.FC<{ onNavigate?: (page: string) => void }> = ({ onNav
               </motion.p>
             )}
             <div className="flex items-center gap-2">
-              <Sparkles className="w-3 h-3 text-indigo-400" />
+              <Sparkles className="w-3 h-3 text-primary-light" />
               <p className="text-[10px] md:text-xs font-medium text-slate-400">Orie Map AI Mentor • Đồng hành cùng ước mơ của bạn</p>
             </div>
           </div>

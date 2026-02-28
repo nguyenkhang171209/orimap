@@ -1,8 +1,9 @@
 
 import React, { useState, useMemo, useEffect, useRef } from 'react';
-import { Search as SearchIcon, MapPin, GraduationCap, ArrowUpRight, Heart, SlidersHorizontal, AlertCircle, Sparkles, Loader2, Bookmark } from 'lucide-react';
+import { Search as SearchIcon, MapPin, GraduationCap, ArrowUpRight, Heart, SlidersHorizontal, AlertCircle, Sparkles, Loader2, Bookmark, BrainCircuit, ExternalLink } from 'lucide-react';
+import Markdown from 'react-markdown';
 import { MAJORS } from '../constants';
-import { getMajorSuggestions } from '../services/gemini';
+import { getMajorSuggestions, getMajorInfoWithSearch } from '../services/gemini';
 
 interface SearchPageProps {
   onNavigate: (page: string, params?: any) => void;
@@ -22,6 +23,10 @@ const SearchPage: React.FC<SearchPageProps> = ({ onNavigate, savedMajorIds, onTo
   const [isAiLoading, setIsAiLoading] = useState(false);
   const [showSuggestions, setShowSuggestions] = useState(false);
   const suggestionRef = useRef<HTMLDivElement>(null);
+
+  // AI Search State
+  const [aiSearchInfo, setAiSearchInfo] = useState<{ text: string, groundingChunks: any[] } | null>(null);
+  const [isAiSearchLoading, setIsAiSearchLoading] = useState(false);
 
   const examBlocks = ['A00', 'A01', 'B00', 'C00', 'D01', 'H00', 'V00'];
   const uniTypes = [
@@ -100,6 +105,7 @@ const SearchPage: React.FC<SearchPageProps> = ({ onNavigate, savedMajorIds, onTo
     setSelectedBlocks([]);
     setSelectedLocation('all');
     setSelectedTypes([]);
+    setAiSearchInfo(null);
   };
 
   const handleSelectSuggestion = (majorId: string) => {
@@ -108,6 +114,15 @@ const SearchPage: React.FC<SearchPageProps> = ({ onNavigate, savedMajorIds, onTo
       setSearchTerm(major.majorName);
       setShowSuggestions(false);
     }
+  };
+
+  const handleAiSearch = async () => {
+    if (!searchTerm || searchTerm.length < 3) return;
+    setIsAiSearchLoading(true);
+    setShowSuggestions(false);
+    const result = await getMajorInfoWithSearch(searchTerm);
+    setAiSearchInfo(result);
+    setIsAiSearchLoading(false);
   };
 
   return (
@@ -135,14 +150,26 @@ const SearchPage: React.FC<SearchPageProps> = ({ onNavigate, savedMajorIds, onTo
             </div>
             <input
               type="text"
-              className="block w-full pl-12 md:pl-16 pr-4 md:pr-40 py-4 md:py-6 bg-white border border-slate-200/60 rounded-2xl md:rounded-[2.5rem] shadow-xl md:shadow-2xl shadow-primary-100/50 focus:ring-4 md:ring-8 focus:ring-primary-50/50 focus:border-primary transition-all text-base md:text-xl outline-none font-bold text-slate-800 placeholder:text-slate-300 z-0"
+              className="block w-full pl-12 md:pl-16 pr-24 md:pr-48 py-4 md:py-6 bg-white border border-slate-200/60 rounded-2xl md:rounded-[2.5rem] shadow-xl md:shadow-2xl shadow-primary-100/50 focus:ring-4 md:ring-8 focus:ring-primary-50/50 focus:border-primary transition-all text-base md:text-xl outline-none font-bold text-slate-800 placeholder:text-slate-300 z-0"
               placeholder="Bạn muốn học gì?..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               onFocus={() => searchTerm.length >= 3 && setShowSuggestions(true)}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter') {
+                  setShowSuggestions(false);
+                }
+              }}
             />
-            <div className="absolute inset-y-3 right-3 px-8 bg-slate-900 text-white rounded-[2rem] font-black text-xs uppercase tracking-widest hidden sm:flex items-center justify-center cursor-default shadow-lg shadow-slate-900/20">
-              {sortedFilteredMajors.length} KẾT QUẢ
+            <div className="absolute inset-y-2 right-2 md:inset-y-3 md:right-3 flex items-center gap-2">
+              <button 
+                onClick={handleAiSearch}
+                disabled={isAiSearchLoading || searchTerm.length < 3}
+                className="px-4 md:px-6 h-full bg-primary text-white rounded-[1.5rem] md:rounded-[2rem] font-black text-xs uppercase tracking-widest flex items-center justify-center gap-2 hover:bg-primary-dark transition-all shadow-lg shadow-primary/20 disabled:opacity-50 disabled:hover:bg-primary"
+              >
+                {isAiSearchLoading ? <Loader2 className="w-4 h-4 animate-spin" /> : <BrainCircuit className="w-4 h-4" />}
+                <span className="hidden sm:inline">Hỏi AI</span>
+              </button>
             </div>
           </div>
 
@@ -193,6 +220,56 @@ const SearchPage: React.FC<SearchPageProps> = ({ onNavigate, savedMajorIds, onTo
             </div>
           )}
         </div>
+
+        {/* AI Search Result */}
+        {aiSearchInfo && (
+          <div className="max-w-4xl mx-auto mt-8 text-left animate-in fade-in slide-in-from-bottom-4 duration-500">
+            <div className="bg-white p-6 md:p-8 rounded-[2rem] border border-primary-100 shadow-xl shadow-primary/5 relative overflow-hidden">
+              <div className="absolute top-0 right-0 p-8 opacity-5 pointer-events-none">
+                <BrainCircuit className="w-32 h-32 text-primary" />
+              </div>
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-10 h-10 bg-primary-50 rounded-xl flex items-center justify-center text-primary">
+                  <Sparkles className="w-5 h-5" />
+                </div>
+                <div>
+                  <h3 className="text-sm font-black text-slate-900 uppercase tracking-widest">Orie AI Insight</h3>
+                  <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Cập nhật theo thời gian thực</p>
+                </div>
+              </div>
+              <div className="prose prose-sm md:prose-base prose-slate max-w-none relative z-10">
+                <div className="markdown-body text-slate-700 leading-relaxed font-medium">
+                  <Markdown>{aiSearchInfo.text}</Markdown>
+                </div>
+              </div>
+              
+              {aiSearchInfo.groundingChunks && aiSearchInfo.groundingChunks.length > 0 && (
+                <div className="mt-6 pt-6 border-t border-slate-100 relative z-10">
+                  <h4 className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-3">Nguồn tham khảo</h4>
+                  <div className="flex flex-wrap gap-2">
+                    {aiSearchInfo.groundingChunks.map((chunk: any, i: number) => {
+                      if (chunk.web?.uri) {
+                        return (
+                          <a 
+                            key={i} 
+                            href={chunk.web.uri} 
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-slate-50 hover:bg-primary-50 text-slate-600 hover:text-primary rounded-lg text-[10px] font-bold transition-colors border border-slate-100 hover:border-primary-100"
+                          >
+                            <ExternalLink className="w-3 h-3" />
+                            {chunk.web.title || new URL(chunk.web.uri).hostname}
+                          </a>
+                        );
+                      }
+                      return null;
+                    })}
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
+        )}
       </div>
 
       <div className="flex flex-col lg:flex-row gap-6 md:gap-10">

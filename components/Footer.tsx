@@ -43,10 +43,10 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
             </div>
             
             <div className="space-y-4">
-              <p className="text-indigo-100/60 text-base leading-relaxed max-w-sm font-medium">
+              <p className="text-primary-100/60 text-base leading-relaxed max-w-sm font-medium">
                 Nền tảng hướng nghiệp toàn diện ứng dụng trí tuệ nhân tạo thế hệ mới cho học sinh Việt Nam.
               </p>
-              <p className="text-indigo-100/40 text-sm leading-relaxed max-w-sm">
+              <p className="text-primary-100/40 text-sm leading-relaxed max-w-sm">
                 Kiến tạo tương lai bằng cách kết nối đam mê cá nhân với dữ liệu thị trường lao động thực tế.
               </p>
             </div>

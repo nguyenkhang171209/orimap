@@ -100,3 +100,29 @@ export const getMajorSuggestions = async (query: string, availableMajors: any[])
     return [];
   }
 };
+
+export const getMajorInfoWithSearch = async (query: string) => {
+  if (!query) return null;
+  
+  const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
+  const prompt = `Tìm kiếm thông tin mới nhất về ngành học hoặc trường đại học sau tại Việt Nam: "${query}". 
+  Hãy tóm tắt ngắn gọn (khoảng 3-4 câu) về cơ hội việc làm, mức lương trung bình, và xu hướng tuyển sinh mới nhất.`;
+
+  try {
+    const response = await ai.models.generateContent({
+      model: 'gemini-3-flash-preview',
+      contents: prompt,
+      config: {
+        tools: [{ googleSearch: {} }]
+      }
+    });
+    
+    return {
+      text: response.text,
+      groundingChunks: response.candidates?.[0]?.groundingMetadata?.groundingChunks || []
+    };
+  } catch (error) {
+    console.error("Google Search Error:", error);
+    return null;
+  }
+};

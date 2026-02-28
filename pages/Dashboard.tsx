@@ -165,9 +165,9 @@ const Dashboard: React.FC<DashboardProps> = ({ savedMajorIds, studentProfile, on
       {/* Stats Overview Section */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
         {[
-          { label: 'Tiến độ mục tiêu', value: '65%', icon: Target, color: 'text-indigo-600', bg: 'bg-indigo-50', trend: '+5% so với tuần trước' },
+          { label: 'Tiến độ mục tiêu', value: '65%', icon: Target, color: 'text-primary', bg: 'bg-primary-50', trend: '+5% so với tuần trước' },
           { label: 'Chuyên đề hoàn thành', value: '12/18', icon: BookOpen, color: 'text-emerald-600', bg: 'bg-emerald-50', trend: 'Đúng tiến độ' },
-          { label: 'Điểm đánh giá AI', value: '8.5', icon: Brain, color: 'text-orange-600', bg: 'bg-orange-50', trend: 'Top 15% toàn khối' },
+          { label: 'Điểm đánh giá AI', value: '8.5', icon: Brain, color: 'text-secondary', bg: 'bg-secondary-50', trend: 'Top 15% toàn khối' },
           { label: 'Ngày còn lại', value: '128', icon: Clock, color: 'text-rose-600', bg: 'bg-rose-50', trend: 'Kỳ thi THPT Quốc gia' },
         ].map((stat, i) => (
           <div key={i} className="bg-white rounded-xl md:rounded-2xl p-4 md:p-6 shadow-sm border border-gray-100 hover:shadow-md lg:hover:-translate-y-1 transition-all duration-300 group">
@@ -201,7 +201,7 @@ const Dashboard: React.FC<DashboardProps> = ({ savedMajorIds, studentProfile, on
                 <h3 className="text-base md:text-lg font-bold text-gray-900 mb-1">Lộ trình học tập cá nhân</h3>
                 <p className="text-xs md:text-sm text-gray-500">Dựa trên mục tiêu: {studentSavedMajors.length > 0 ? studentSavedMajors[0].majorName : 'Chưa chọn ngành'}</p>
               </div>
-              <button className="text-indigo-600 text-xs md:text-sm font-bold hover:underline">Xem chi tiết</button>
+              <button className="text-primary text-xs md:text-sm font-bold hover:underline">Xem chi tiết</button>
             </div>
             
             <div className="space-y-5 md:space-y-6">
@@ -209,13 +209,13 @@ const Dashboard: React.FC<DashboardProps> = ({ savedMajorIds, studentProfile, on
                 <div className="flex-1">
                   <div className="flex justify-between mb-2">
                     <span className="text-xs md:text-sm font-bold text-gray-700">Kiến thức nền tảng</span>
-                    <span className="text-xs md:text-sm font-bold text-indigo-600">85%</span>
+                    <span className="text-xs md:text-sm font-bold text-primary">85%</span>
                   </div>
                   <div className="w-full h-2 md:h-2.5 bg-gray-100 rounded-full overflow-hidden">
-                    <div className="h-full bg-indigo-600 rounded-full" style={{ width: '85%' }}></div>
+                    <div className="h-full bg-primary rounded-full" style={{ width: '85%' }}></div>
                   </div>
                 </div>
-                <div className="w-10 h-10 md:w-12 md:h-12 rounded-full border-2 border-indigo-100 flex items-center justify-center text-[10px] md:text-xs font-bold text-indigo-600 shrink-0">
+                <div className="w-10 h-10 md:w-12 md:h-12 rounded-full border-2 border-primary-100 flex items-center justify-center text-[10px] md:text-xs font-bold text-primary shrink-0">
                   85%
                 </div>
               </div>
@@ -224,23 +224,23 @@ const Dashboard: React.FC<DashboardProps> = ({ savedMajorIds, studentProfile, on
                 <div className="flex-1">
                   <div className="flex justify-between mb-2">
                     <span className="text-xs md:text-sm font-bold text-gray-700">Luyện đề nâng cao</span>
-                    <span className="text-xs md:text-sm font-bold text-orange-500">42%</span>
+                    <span className="text-xs md:text-sm font-bold text-secondary">42%</span>
                   </div>
                   <div className="w-full h-2 md:h-2.5 bg-gray-100 rounded-full overflow-hidden">
-                    <div className="h-full bg-orange-500 rounded-full" style={{ width: '42%' }}></div>
+                    <div className="h-full bg-secondary rounded-full" style={{ width: '42%' }}></div>
                   </div>
                 </div>
-                <div className="w-10 h-10 md:w-12 md:h-12 rounded-full border-2 border-orange-100 flex items-center justify-center text-[10px] md:text-xs font-bold text-orange-500 shrink-0">
+                <div className="w-10 h-10 md:w-12 md:h-12 rounded-full border-2 border-secondary-100 flex items-center justify-center text-[10px] md:text-xs font-bold text-secondary shrink-0">
                   42%
                 </div>
               </div>
             </div>
 
-            <div className="mt-8 md:mt-10 p-4 md:p-6 bg-indigo-50 rounded-xl md:rounded-2xl border border-indigo-100 flex items-center gap-3 md:gap-4">
+            <div className="mt-8 md:mt-10 p-4 md:p-6 bg-primary-50 rounded-xl md:rounded-2xl border border-primary-100 flex items-center gap-3 md:gap-4">
               <div className="w-8 h-8 md:w-10 md:h-10 bg-white rounded-lg md:rounded-xl flex items-center justify-center shadow-sm shrink-0">
-                <Sparkles className="w-4 h-4 md:w-5 md:h-5 text-indigo-600" />
+                <Sparkles className="w-4 h-4 md:w-5 md:h-5 text-primary" />
               </div>
-              <p className="text-xs md:text-sm text-indigo-900 font-medium">
+              <p className="text-xs md:text-sm text-primary-dark font-medium">
                 <span className="font-bold">Gợi ý từ AI:</span> Bạn nên dành thêm 30 phút mỗi ngày cho phần Hình học không gian để cải thiện điểm số.
               </p>
             </div>
@@ -252,8 +252,8 @@ const Dashboard: React.FC<DashboardProps> = ({ savedMajorIds, studentProfile, on
             <div className="space-y-5 md:space-y-6">
               {[
                 { title: 'Hoàn thành bài test Tư duy Logic', time: '2 giờ trước', icon: CheckCircle, color: 'text-emerald-500' },
-                { title: 'Đã lưu ngành Công nghệ thông tin', time: '5 giờ trước', icon: Bookmark, color: 'text-indigo-500' },
-                { title: 'Cập nhật lịch thi học kỳ II', time: 'Hôm qua', icon: Calendar, color: 'text-orange-500' },
+                { title: 'Đã lưu ngành Công nghệ thông tin', time: '5 giờ trước', icon: Bookmark, color: 'text-primary' },
+                { title: 'Cập nhật lịch thi học kỳ II', time: 'Hôm qua', icon: Calendar, color: 'text-secondary' },
               ].map((activity, i) => (
                 <div key={i} className="flex items-start gap-3 md:gap-4">
                   <div className={`mt-0.5 w-7 h-7 md:w-8 md:h-8 rounded-lg bg-gray-50 flex items-center justify-center ${activity.color} shrink-0`}>
@@ -277,7 +277,7 @@ const Dashboard: React.FC<DashboardProps> = ({ savedMajorIds, studentProfile, on
             {exams.length > 0 ? (
               <div className="space-y-4">
                 <div className="flex items-center gap-3 md:gap-4">
-                  <div className="w-10 h-10 md:w-12 md:h-12 bg-orange-50 text-orange-600 rounded-lg md:rounded-xl flex flex-col items-center justify-center shrink-0">
+                  <div className="w-10 h-10 md:w-12 md:h-12 bg-secondary-50 text-secondary rounded-lg md:rounded-xl flex flex-col items-center justify-center shrink-0">
                     <span className="text-[9px] md:text-[10px] font-black leading-none mb-1">{new Date(exams[0].date).getDate()}</span>
                     <span className="text-xs md:text-sm font-black leading-none">T{new Date(exams[0].date).getMonth() + 1}</span>
                   </div>
@@ -288,7 +288,7 @@ const Dashboard: React.FC<DashboardProps> = ({ savedMajorIds, studentProfile, on
                 </div>
                 <button 
                   onClick={() => setActiveTab('exams')}
-                  className="w-full py-2.5 text-indigo-600 text-xs font-bold border border-indigo-100 rounded-lg md:rounded-xl hover:bg-indigo-50 transition-colors"
+                  className="w-full py-2.5 text-primary text-xs font-bold border border-primary-100 rounded-lg md:rounded-xl hover:bg-primary-50 transition-colors"
                 >
                   Xem tất cả lịch thi
                 </button>
@@ -299,16 +299,16 @@ const Dashboard: React.FC<DashboardProps> = ({ savedMajorIds, studentProfile, on
           </div>
 
           {/* AI Suggestions */}
-          <div className="bg-gradient-to-br from-indigo-600 to-violet-700 rounded-xl md:rounded-2xl p-5 md:p-6 shadow-lg text-white hover:shadow-xl lg:hover:-translate-y-1 transition-all duration-300 relative overflow-hidden">
+          <div className="bg-gradient-to-br from-primary to-primary-dark rounded-xl md:rounded-2xl p-5 md:p-6 shadow-lg text-white hover:shadow-xl lg:hover:-translate-y-1 transition-all duration-300 relative overflow-hidden">
             <div className="absolute top-0 right-0 w-24 h-24 md:w-32 md:h-32 bg-white/10 rounded-full -mr-12 -mt-12 md:-mr-16 md:-mt-16 blur-xl md:blur-2xl"></div>
             <div className="relative z-10">
               <div className="flex items-center gap-2 mb-3 md:mb-4">
-                <Wand2 className="w-4 h-4 md:w-5 md:h-5 text-indigo-200" />
-                <span className="text-[10px] font-black uppercase tracking-widest text-indigo-100">AI Mentor</span>
+                <Wand2 className="w-4 h-4 md:w-5 md:h-5 text-primary-100" />
+                <span className="text-[10px] font-black uppercase tracking-widest text-primary-50">AI Mentor</span>
               </div>
               <h4 className="text-base md:text-lg font-bold mb-1.5 md:mb-2">Phân tích năng lực mới</h4>
-              <p className="text-xs md:text-sm text-indigo-100/80 mb-5 md:mb-6 leading-relaxed">Dựa trên kết quả bài test gần nhất, bạn có tiềm năng lớn trong lĩnh vực Phân tích dữ liệu.</p>
-              <button className="w-full py-3 bg-white text-indigo-600 rounded-lg md:rounded-xl font-bold text-xs md:text-sm hover:bg-indigo-50 transition-colors">
+              <p className="text-xs md:text-sm text-primary-50/80 mb-5 md:mb-6 leading-relaxed">Dựa trên kết quả bài test gần nhất, bạn có tiềm năng lớn trong lĩnh vực Phân tích dữ liệu.</p>
+              <button className="w-full py-3 bg-white text-primary rounded-lg md:rounded-xl font-bold text-xs md:text-sm hover:bg-primary-50 transition-colors">
                 Xem gợi ý nghề nghiệp
               </button>
             </div>
@@ -320,30 +320,30 @@ const Dashboard: React.FC<DashboardProps> = ({ savedMajorIds, studentProfile, on
             <div className="grid grid-cols-2 gap-3">
               <button 
                 onClick={() => onNavigate('search')}
-                className="flex flex-col items-center justify-center p-3 md:p-4 bg-gray-50 rounded-lg md:rounded-xl hover:bg-indigo-50 hover:text-indigo-600 transition-all group"
+                className="flex flex-col items-center justify-center p-3 md:p-4 bg-gray-50 rounded-lg md:rounded-xl hover:bg-primary-50 hover:text-primary transition-all group"
               >
-                <Search className="w-4 h-4 md:w-5 md:h-5 mb-2 text-gray-400 group-hover:text-indigo-600" />
+                <Search className="w-4 h-4 md:w-5 md:h-5 mb-2 text-gray-400 group-hover:text-primary" />
                 <span className="text-[9px] md:text-[10px] font-bold uppercase">Tìm ngành</span>
               </button>
               <button 
                 onClick={() => onNavigate('quiz')}
-                className="flex flex-col items-center justify-center p-3 md:p-4 bg-gray-50 rounded-lg md:rounded-xl hover:bg-indigo-50 hover:text-indigo-600 transition-all group"
+                className="flex flex-col items-center justify-center p-3 md:p-4 bg-gray-50 rounded-lg md:rounded-xl hover:bg-primary-50 hover:text-primary transition-all group"
               >
-                <Brain className="w-4 h-4 md:w-5 md:h-5 mb-2 text-gray-400 group-hover:text-indigo-600" />
+                <Brain className="w-4 h-4 md:w-5 md:h-5 mb-2 text-gray-400 group-hover:text-primary" />
                 <span className="text-[9px] md:text-[10px] font-bold uppercase">Làm Quiz</span>
               </button>
               <button 
                 onClick={() => onNavigate('mentor')}
-                className="flex flex-col items-center justify-center p-3 md:p-4 bg-gray-50 rounded-lg md:rounded-xl hover:bg-indigo-50 hover:text-indigo-600 transition-all group"
+                className="flex flex-col items-center justify-center p-3 md:p-4 bg-gray-50 rounded-lg md:rounded-xl hover:bg-primary-50 hover:text-primary transition-all group"
               >
-                <Users className="w-4 h-4 md:w-5 md:h-5 mb-2 text-gray-400 group-hover:text-indigo-600" />
+                <Users className="w-4 h-4 md:w-5 md:h-5 mb-2 text-gray-400 group-hover:text-primary" />
                 <span className="text-[9px] md:text-[10px] font-bold uppercase">Hỏi Mentor</span>
               </button>
               <button 
                 onClick={() => setActiveTab('roadmap')}
-                className="flex flex-col items-center justify-center p-3 md:p-4 bg-gray-50 rounded-lg md:rounded-xl hover:bg-indigo-50 hover:text-indigo-600 transition-all group"
+                className="flex flex-col items-center justify-center p-3 md:p-4 bg-gray-50 rounded-lg md:rounded-xl hover:bg-primary-50 hover:text-primary transition-all group"
               >
-                <Rocket className="w-4 h-4 md:w-5 md:h-5 mb-2 text-gray-400 group-hover:text-indigo-600" />
+                <Rocket className="w-4 h-4 md:w-5 md:h-5 mb-2 text-gray-400 group-hover:text-primary" />
                 <span className="text-[9px] md:text-[10px] font-bold uppercase">Lộ trình</span>
               </button>
             </div>
@@ -356,9 +356,9 @@ const Dashboard: React.FC<DashboardProps> = ({ savedMajorIds, studentProfile, on
   const renderExams = () => {
     return (
       <div className="space-y-8 animate-in fade-in duration-500 pb-20">
-        <div className="flex flex-col sm:flex-row justify-between items-center bg-white p-6 rounded-[2.5rem] border border-blue-100 shadow-sm gap-6">
+          <div className="flex flex-col sm:flex-row justify-between items-center bg-white p-6 rounded-[2.5rem] border border-primary-100 shadow-sm gap-6">
           <div className="flex items-center gap-4">
-            <div className="w-12 h-12 rounded-2xl bg-indigo-50 text-[#4F46E5] flex items-center justify-center">
+            <div className="w-12 h-12 rounded-2xl bg-primary-50 text-primary flex items-center justify-center">
               <Calendar className="w-7 h-7" />
             </div>
             <h3 className="text-2xl font-black text-slate-900 tracking-tight">Lịch thi chi tiết</h3>
@@ -366,13 +366,13 @@ const Dashboard: React.FC<DashboardProps> = ({ savedMajorIds, studentProfile, on
             <div className="bg-slate-100 p-1 rounded-2xl flex items-center border border-slate-200 ml-2">
               <button 
                 onClick={() => setExamViewMode('list')}
-                className={`p-2 rounded-xl transition-all ${examViewMode === 'list' ? 'bg-white shadow-md text-[#4F46E5]' : 'text-slate-400 hover:text-slate-600'}`}
+                className={`p-2 rounded-xl transition-all ${examViewMode === 'list' ? 'bg-white shadow-md text-primary' : 'text-slate-400 hover:text-slate-600'}`}
               >
                 <LayoutList className="w-5 h-5" />
               </button>
               <button 
                 onClick={() => setExamViewMode('calendar')}
-                className={`p-2 rounded-xl transition-all ${examViewMode === 'calendar' ? 'bg-white shadow-md text-[#4F46E5]' : 'text-slate-400 hover:text-slate-600'}`}
+                className={`p-2 rounded-xl transition-all ${examViewMode === 'calendar' ? 'bg-white shadow-md text-primary' : 'text-slate-400 hover:text-slate-600'}`}
               >
                 <CalendarDays className="w-5 h-5" />
               </button>
@@ -381,7 +381,7 @@ const Dashboard: React.FC<DashboardProps> = ({ savedMajorIds, studentProfile, on
 
           <button 
             onClick={openAddModal}
-            className="flex items-center gap-2 px-8 py-4 bg-[#4F46E5] text-white rounded-2xl font-black text-sm uppercase tracking-widest hover:bg-indigo-700 transition-all shadow-xl shadow-indigo-600/30 active:scale-95"
+            className="flex items-center gap-2 px-8 py-4 bg-primary text-white rounded-2xl font-black text-sm uppercase tracking-widest hover:bg-primary-dark transition-all shadow-xl shadow-primary/30 active:scale-95"
           >
             <Plus className="w-5 h-5" /> Thêm lịch thi
           </button>
@@ -400,8 +400,8 @@ const Dashboard: React.FC<DashboardProps> = ({ savedMajorIds, studentProfile, on
                     className={`bg-white p-8 rounded-[3rem] border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col md:flex-row items-center justify-between relative overflow-hidden animate-in fade-in slide-in-from-left-4 ${isDeleting ? 'opacity-0 scale-95 pointer-events-none' : 'opacity-100 scale-100'}`}
                   >
                     <div className="flex items-center gap-10 flex-1">
-                      <div className="w-20 h-20 rounded-[2rem] bg-indigo-50 border border-indigo-100 flex flex-col items-center justify-center shrink-0">
-                        <span className="text-[12px] font-black text-[#4F46E5] uppercase leading-none mb-1">{dateObj.getDate()}</span>
+                      <div className="w-20 h-20 rounded-[2rem] bg-primary-50 border border-primary-100 flex flex-col items-center justify-center shrink-0">
+                        <span className="text-[12px] font-black text-primary uppercase leading-none mb-1">{dateObj.getDate()}</span>
                         <span className="text-2xl font-black text-slate-900 leading-none">Th.{dateObj.getMonth() + 1}</span>
                       </div>
                       
@@ -409,11 +409,11 @@ const Dashboard: React.FC<DashboardProps> = ({ savedMajorIds, studentProfile, on
                         <h4 className="text-3xl font-black text-slate-900 tracking-tight">{exam.subject}</h4>
                         <div className="flex flex-wrap gap-6">
                           <div className="flex items-center gap-2.5 text-base font-bold text-slate-500">
-                            <Clock className="w-5 h-5 text-[#4F46E5]" />
+                            <Clock className="w-5 h-5 text-primary" />
                             <span>{exam.time}</span>
                           </div>
                           <div className="flex items-center gap-2.5 text-base font-bold text-slate-500">
-                            <GraduationCap className="w-5 h-5 text-[#4F46E5]" />
+                            <GraduationCap className="w-5 h-5 text-primary" />
                             <span>Phòng {exam.room} • {exam.building}</span>
                           </div>
                         </div>
@@ -479,8 +479,8 @@ const Dashboard: React.FC<DashboardProps> = ({ savedMajorIds, studentProfile, on
                 const isToday = new Date().toDateString() === new Date(calendarDate.getFullYear(), calendarDate.getMonth(), day).toDateString();
 
                 return (
-                  <div key={day} className={`bg-white min-h-[140px] p-4 border-r border-b border-slate-50 transition-colors hover:bg-indigo-50/20 group relative`}>
-                    <span className={`text-base font-black ${isToday ? 'bg-[#4F46E5] text-white w-8 h-8 flex items-center justify-center rounded-full mb-2' : 'text-slate-400'}`}>
+                  <div key={day} className={`bg-white min-h-[140px] p-4 border-r border-b border-slate-50 transition-colors hover:bg-primary-50/20 group relative`}>
+                    <span className={`text-base font-black ${isToday ? 'bg-primary text-white w-8 h-8 flex items-center justify-center rounded-full mb-2' : 'text-slate-400'}`}>
                       {day}
                     </span>
                     <div className="space-y-2 mt-3">
@@ -488,7 +488,7 @@ const Dashboard: React.FC<DashboardProps> = ({ savedMajorIds, studentProfile, on
                         <button 
                           key={exam.id}
                           onClick={() => openEditModal(exam)}
-                          className="w-full text-left p-2.5 bg-indigo-50 border border-indigo-100 rounded-xl text-[11px] font-black text-indigo-700 hover:bg-indigo-100 transition-colors truncate shadow-sm"
+                          className="w-full text-left p-2.5 bg-primary-50 border border-primary-100 rounded-xl text-[11px] font-black text-primary hover:bg-primary-100 transition-colors truncate shadow-sm"
                         >
                           {exam.time} - {exam.subject}
                         </button>
@@ -521,7 +521,7 @@ const Dashboard: React.FC<DashboardProps> = ({ savedMajorIds, studentProfile, on
                       value={examFormData.subject}
                       onChange={(e) => setExamFormData({...examFormData, subject: e.target.value})}
                       placeholder="VD: Toán học"
-                      className="w-full px-6 py-4 rounded-2xl bg-slate-50 border border-slate-100 focus:ring-4 ring-indigo-50 focus:bg-white transition-all outline-none font-bold text-slate-700" 
+                      className="w-full px-6 py-4 rounded-2xl bg-slate-50 border border-slate-100 focus:ring-4 ring-primary-50 focus:bg-white transition-all outline-none font-bold text-slate-700" 
                     />
                   </div>
                   <div className="grid grid-cols-2 gap-6">
@@ -532,7 +532,7 @@ const Dashboard: React.FC<DashboardProps> = ({ savedMajorIds, studentProfile, on
                         type="date" 
                         value={examFormData.date}
                         onChange={(e) => setExamFormData({...examFormData, date: e.target.value})}
-                        className="w-full px-6 py-4 rounded-2xl bg-slate-50 border border-slate-100 focus:ring-4 ring-indigo-50 focus:bg-white transition-all outline-none font-bold text-slate-700" 
+                        className="w-full px-6 py-4 rounded-2xl bg-slate-50 border border-slate-100 focus:ring-4 ring-primary-50 focus:bg-white transition-all outline-none font-bold text-slate-700" 
                       />
                     </div>
                     <div className="space-y-2">
@@ -542,7 +542,7 @@ const Dashboard: React.FC<DashboardProps> = ({ savedMajorIds, studentProfile, on
                         type="time" 
                         value={examFormData.time}
                         onChange={(e) => setExamFormData({...examFormData, time: e.target.value})}
-                        className="w-full px-6 py-4 rounded-2xl bg-slate-50 border border-slate-100 focus:ring-4 ring-indigo-50 focus:bg-white transition-all outline-none font-bold text-slate-700" 
+                        className="w-full px-6 py-4 rounded-2xl bg-slate-50 border border-slate-100 focus:ring-4 ring-primary-50 focus:bg-white transition-all outline-none font-bold text-slate-700" 
                       />
                     </div>
                   </div>
@@ -555,7 +555,7 @@ const Dashboard: React.FC<DashboardProps> = ({ savedMajorIds, studentProfile, on
                         value={examFormData.room}
                         onChange={(e) => setExamFormData({...examFormData, room: e.target.value})}
                         placeholder="VD: 204"
-                        className="w-full px-6 py-4 rounded-2xl bg-slate-50 border border-slate-100 focus:ring-4 ring-indigo-50 focus:bg-white transition-all outline-none font-bold text-slate-700" 
+                        className="w-full px-6 py-4 rounded-2xl bg-slate-50 border border-slate-100 focus:ring-4 ring-primary-50 focus:bg-white transition-all outline-none font-bold text-slate-700" 
                       />
                     </div>
                     <div className="space-y-2">
@@ -566,14 +566,14 @@ const Dashboard: React.FC<DashboardProps> = ({ savedMajorIds, studentProfile, on
                         value={examFormData.building}
                         onChange={(e) => setExamFormData({...examFormData, building: e.target.value})}
                         placeholder="VD: Nhà A"
-                        className="w-full px-6 py-4 rounded-2xl bg-slate-50 border border-slate-100 focus:ring-4 ring-indigo-50 focus:bg-white transition-all outline-none font-bold text-slate-700" 
+                        className="w-full px-6 py-4 rounded-2xl bg-slate-50 border border-slate-100 focus:ring-4 ring-primary-50 focus:bg-white transition-all outline-none font-bold text-slate-700" 
                       />
                     </div>
                   </div>
 
                   <button 
                     type="submit"
-                    className="w-full py-5 bg-[#4F46E5] text-white rounded-[2rem] font-black text-lg shadow-xl shadow-indigo-600/20 hover:bg-indigo-700 transition-all active:scale-95 mt-4"
+                    className="w-full py-5 bg-primary text-white rounded-[2rem] font-black text-lg shadow-xl shadow-primary/20 hover:bg-primary-dark transition-all active:scale-95 mt-4"
                   >
                     Lưu lịch thi
                   </button>
@@ -598,18 +598,18 @@ const Dashboard: React.FC<DashboardProps> = ({ savedMajorIds, studentProfile, on
                 onClick={() => setSelectedMajorId(major.id)}
                 className={`w-full text-left p-6 rounded-[2rem] border transition-all relative overflow-hidden ${
                   selectedMajorId === major.id 
-                    ? 'bg-white border-[#4F46E5] shadow-xl shadow-indigo-900/5 ring-2 ring-indigo-50' 
+                    ? 'bg-white border-primary shadow-xl shadow-primary-dark/5 ring-2 ring-primary-50' 
                     : 'bg-slate-50 border-slate-100 hover:bg-white hover:border-slate-200'
                 }`}
               >
                 {selectedMajorId === major.id && (
-                   <div className="absolute top-0 left-0 w-1.5 h-full bg-[#4F46E5]"></div>
+                   <div className="absolute top-0 left-0 w-1.5 h-full bg-primary"></div>
                 )}
                 <div className="flex justify-between items-start mb-3">
-                  <span className={`flex items-center gap-1 px-3 py-1 bg-indigo-600 text-white rounded-lg text-[9px] font-black uppercase tracking-widest shadow-lg shadow-indigo-600/10`}>
+                  <span className={`flex items-center gap-1 px-3 py-1 bg-primary text-white rounded-lg text-[9px] font-black uppercase tracking-widest shadow-lg shadow-primary/10`}>
                     <Bookmark className="w-3 h-3 fill-current" /> Quan tâm
                   </span>
-                  <Star className={`w-5 h-5 ${selectedMajorId === major.id ? 'text-[#FF8C00] fill-[#FF8C00]' : 'text-slate-300'}`} />
+                  <Star className={`w-5 h-5 ${selectedMajorId === major.id ? 'text-secondary fill-secondary' : 'text-slate-300'}`} />
                 </div>
                 <h4 className="text-xl font-[800] text-slate-900 mb-2">{major.majorName}</h4>
                 <div className="flex items-center gap-4 text-xs font-bold text-slate-400">
@@ -622,7 +622,7 @@ const Dashboard: React.FC<DashboardProps> = ({ savedMajorIds, studentProfile, on
               <p className="text-slate-400 font-bold">Danh sách yêu thích đang trống</p>
               <button 
                 onClick={() => onNavigate('search')}
-                className="bg-indigo-600 text-white px-6 py-3 rounded-xl font-bold text-xs uppercase tracking-widest hover:bg-indigo-700 transition-all flex items-center justify-center gap-2 mx-auto"
+                className="bg-primary text-white px-6 py-3 rounded-xl font-bold text-xs uppercase tracking-widest hover:bg-primary-dark transition-all flex items-center justify-center gap-2 mx-auto"
               >
                 <Search className="w-4 h-4" /> Khám phá ngay
               </button>
@@ -630,7 +630,7 @@ const Dashboard: React.FC<DashboardProps> = ({ savedMajorIds, studentProfile, on
           )}
           <button 
             onClick={() => onNavigate('search')}
-            className="w-full py-6 border-2 border-dashed border-slate-200 rounded-[2rem] text-slate-400 font-bold hover:border-blue-300 hover:text-blue-400 transition-all flex items-center justify-center gap-2"
+            className="w-full py-6 border-2 border-dashed border-slate-200 rounded-[2rem] text-slate-400 font-bold hover:border-primary-light hover:text-primary-light transition-all flex items-center justify-center gap-2"
           >
              + Tìm thêm ngành mới
           </button>
@@ -642,19 +642,19 @@ const Dashboard: React.FC<DashboardProps> = ({ savedMajorIds, studentProfile, on
           <div className="bg-white rounded-[3rem] border border-slate-100 shadow-sm p-10 lg:p-14 space-y-12 animate-in fade-in slide-in-from-right-4">
             <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-10 border-b border-slate-100 pb-12">
               <div className="space-y-4">
-                <h2 className="text-4xl font-[900] text-[#111E6C]">{selectedMajor.majorName}</h2>
+                <h2 className="text-4xl font-[900] text-primary-dark">{selectedMajor.majorName}</h2>
                 <div className="flex flex-wrap gap-3">
                   {selectedMajor.blocks.map(tag => (
                     <span key={tag} className="px-4 py-1.5 bg-slate-100 text-slate-600 rounded-xl text-xs font-black uppercase tracking-widest">{tag}</span>
                   ))}
                 </div>
               </div>
-              <div className="bg-blue-50/50 p-6 rounded-[2.5rem] border border-blue-100 flex items-center gap-6 shrink-0">
-                <div className="w-20 h-20 rounded-full border-8 border-blue-100 border-t-[#4F46E5] flex items-center justify-center">
-                  <span className="text-xl font-black text-[#4F46E5]">92%</span>
+              <div className="bg-primary-50/50 p-6 rounded-[2.5rem] border border-primary-100 flex items-center gap-6 shrink-0">
+                <div className="w-20 h-20 rounded-full border-8 border-primary-100 border-t-primary flex items-center justify-center">
+                  <span className="text-xl font-black text-primary">92%</span>
                 </div>
                 <div>
-                  <p className="text-[10px] font-black text-[#4F46E5] uppercase tracking-widest mb-1">Độ phù hợp AI</p>
+                  <p className="text-[10px] font-black text-primary uppercase tracking-widest mb-1">Độ phù hợp AI</p>
                   <p className="text-sm font-bold text-slate-600 leading-tight">Rất phù hợp với<br />tư duy logic của bạn</p>
                 </div>
               </div>
@@ -662,7 +662,7 @@ const Dashboard: React.FC<DashboardProps> = ({ savedMajorIds, studentProfile, on
 
             <section className="space-y-6">
               <h3 className="text-2xl font-[900] text-slate-900 flex items-center gap-3">
-                <Lightbulb className="w-6 h-6 text-orange-400" /> Tổng quan ngành học
+                <Lightbulb className="w-6 h-6 text-secondary" /> Tổng quan ngành học
               </h3>
               <p className="text-lg text-slate-500 font-medium leading-relaxed">
                 {selectedMajor.description || 'Ngành học này không chỉ cung cấp kiến thức chuyên môn vững chắc mà còn rèn luyện khả năng tư duy giải quyết vấn đề linh hoạt, một trong những kỹ năng quan trọng nhất trong kỷ nguyên số.'}
@@ -685,7 +685,7 @@ const Dashboard: React.FC<DashboardProps> = ({ savedMajorIds, studentProfile, on
 
             <section className="space-y-8">
               <h3 className="text-2xl font-[900] text-slate-900 flex items-center gap-3">
-                <BarChart3 className="w-6 h-6 text-[#4F46E5]" /> Bản đồ năng lực cần thiết
+                <BarChart3 className="w-6 h-6 text-primary" /> Bản đồ năng lực cần thiết
               </h3>
               <div className="grid md:grid-cols-2 gap-10">
                 <div className="space-y-6">
@@ -694,10 +694,10 @@ const Dashboard: React.FC<DashboardProps> = ({ savedMajorIds, studentProfile, on
                     <div key={i} className="space-y-2">
                       <div className="flex justify-between font-bold text-sm">
                         <span className="text-slate-700">{skill.name}</span>
-                        <span className="text-[#4F46E5]">{skill.level}%</span>
+                        <span className="text-primary">{skill.level}%</span>
                       </div>
                       <div className="w-full h-3 bg-slate-100 rounded-full overflow-hidden">
-                        <div className="h-full bg-gradient-to-r from-blue-400 to-[#4F46E5] rounded-full" style={{ width: `${skill.level}%` }}></div>
+                        <div className="h-full bg-gradient-to-r from-primary-light to-primary rounded-full" style={{ width: `${skill.level}%` }}></div>
                       </div>
                     </div>
                   ))}
@@ -706,13 +706,13 @@ const Dashboard: React.FC<DashboardProps> = ({ savedMajorIds, studentProfile, on
                   <p className="text-sm font-black text-slate-400 uppercase tracking-widest">Lời khuyên từ Mentor</p>
                   <div className="flex gap-4">
                     <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center shrink-0 shadow-sm">
-                      <Sparkles className="w-5 h-5 text-orange-400" />
+                      <Sparkles className="w-5 h-5 text-secondary" />
                     </div>
                     <p className="text-sm font-bold text-slate-600 leading-relaxed italic">
                       "Đối với ngành {selectedMajor.majorName}, bạn nên tập trung xây dựng Portfolio dự án cá nhân ngay từ sớm để tăng tính cạnh tranh."
                     </p>
                   </div>
-                  <button className="w-full py-4 bg-[#111E6C] text-white rounded-2xl font-black text-xs uppercase tracking-[0.2em] hover:bg-blue-900 transition-all">
+                  <button className="w-full py-4 bg-primary-dark text-white rounded-2xl font-black text-xs uppercase tracking-[0.2em] hover:bg-primary transition-all">
                     Lấy Checklist kỹ năng
                   </button>
                 </div>
@@ -722,13 +722,13 @@ const Dashboard: React.FC<DashboardProps> = ({ savedMajorIds, studentProfile, on
             <div className="pt-10 border-t border-slate-100 flex flex-col sm:flex-row gap-4">
               <button 
                 onClick={() => onNavigate('major-profile', { id: selectedMajor.id })}
-                className="flex-1 bg-[#FF8C00] text-white py-5 rounded-[2rem] font-black text-lg flex items-center justify-center gap-3 hover:shadow-2xl hover:shadow-orange-500/20 transition-all active:scale-95 shadow-xl shadow-orange-500/10"
+                className="flex-1 bg-secondary text-white py-5 rounded-[2rem] font-black text-lg flex items-center justify-center gap-3 hover:shadow-2xl hover:shadow-secondary/20 transition-all active:scale-95 shadow-xl shadow-secondary/10"
               >
                 <Compass className="w-6 h-6" /> Xem lộ trình học tập 4 năm
               </button>
               <button 
                 onClick={() => onNavigate('mentor')}
-                className="flex-1 bg-[#4F46E5] text-white py-5 rounded-[2rem] font-black text-lg flex items-center justify-center gap-3 hover:shadow-2xl hover:shadow-indigo-900/20 transition-all active:scale-95 shadow-xl shadow-indigo-900/10"
+                className="flex-1 bg-primary text-white py-5 rounded-[2rem] font-black text-lg flex items-center justify-center gap-3 hover:shadow-2xl hover:shadow-primary-dark/20 transition-all active:scale-95 shadow-xl shadow-primary-dark/10"
               >
                 <Users className="w-6 h-6" /> Hỏi Mentor AI về ngành này
               </button>
@@ -736,8 +736,8 @@ const Dashboard: React.FC<DashboardProps> = ({ savedMajorIds, studentProfile, on
           </div>
         ) : (
           <div className="flex flex-col items-center justify-center py-24 text-center bg-white rounded-[3rem] border border-slate-100 border-dashed animate-in fade-in duration-500">
-            <div className="w-24 h-24 bg-indigo-50 rounded-full flex items-center justify-center mb-8">
-              <BookOpen className="w-12 h-12 text-indigo-200" />
+            <div className="w-24 h-24 bg-primary-50 rounded-full flex items-center justify-center mb-8">
+              <BookOpen className="w-12 h-12 text-primary-100" />
             </div>
             <h3 className="text-2xl font-black text-slate-900 mb-2">Chưa có ngành học nào được chọn</h3>
             <p className="text-slate-500 font-medium max-w-sm mb-10">
@@ -745,7 +745,7 @@ const Dashboard: React.FC<DashboardProps> = ({ savedMajorIds, studentProfile, on
             </p>
             <button 
               onClick={() => onNavigate('search')}
-              className="px-8 py-4 bg-indigo-600 text-white rounded-2xl font-black text-sm uppercase tracking-widest hover:bg-indigo-700 transition-all shadow-xl shadow-indigo-600/20"
+              className="px-8 py-4 bg-primary text-white rounded-2xl font-black text-sm uppercase tracking-widest hover:bg-primary-dark transition-all shadow-xl shadow-primary/20"
             >
               Đi đến Trang Tìm kiếm
             </button>
@@ -761,16 +761,16 @@ const Dashboard: React.FC<DashboardProps> = ({ savedMajorIds, studentProfile, on
         <div className="relative w-48 h-48 lg:w-56 lg:h-56 shrink-0">
           <svg className="w-full h-full -rotate-90">
             <circle cx="50%" cy="50%" r="45%" className="stroke-slate-100 fill-none" strokeWidth="12" />
-            <circle cx="50%" cy="50%" r="45%" className="stroke-[#4F46E5] fill-none" strokeWidth="12" strokeDasharray="283" strokeDashoffset="170" strokeLinecap="round" />
+            <circle cx="50%" cy="50%" r="45%" className="stroke-primary" fill="none" strokeWidth="12" strokeDasharray="283" strokeDashoffset="170" strokeLinecap="round" />
           </svg>
           <div className="absolute inset-0 flex flex-col items-center justify-center">
-            <span className="text-4xl lg:text-5xl font-black text-[#111E6C]">40%</span>
+            <span className="text-4xl lg:text-5xl font-black text-primary-dark">40%</span>
             <span className="text-[10px] font-black uppercase text-slate-400 tracking-widest">Mastery</span>
           </div>
         </div>
         <div className="flex-1 space-y-6 text-center lg:text-left">
-          <div className="inline-flex items-center gap-2 bg-blue-50 px-4 py-2 rounded-xl text-[#4F46E5] text-xs font-black uppercase tracking-widest">
-            <Star className="w-4 h-4 fill-[#4F46E5]" /> Trình độ: Intermediate (Thực thi)
+          <div className="inline-flex items-center gap-2 bg-primary-50 px-4 py-2 rounded-xl text-primary text-xs font-black uppercase tracking-widest">
+            <Star className="w-4 h-4 fill-primary" /> Trình độ: Intermediate (Thực thi)
           </div>
           <h2 className="text-4xl font-[900] text-slate-900 leading-tight">Bạn đang trên đà trở thành <br />một AI Architect thực thụ!</h2>
           <p className="text-slate-500 text-lg font-medium leading-relaxed max-w-2xl">
@@ -781,7 +781,7 @@ const Dashboard: React.FC<DashboardProps> = ({ savedMajorIds, studentProfile, on
 
       <section className="space-y-8">
         <h3 className="text-2xl font-[900] text-slate-900 px-4 flex items-center gap-3">
-          <Layers className="w-6 h-6 text-[#FF8C00]" /> Hành trình chinh phục AI
+          <Layers className="w-6 h-6 text-secondary" /> Hành trình chinh phục AI
         </h3>
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
           {[
@@ -792,12 +792,12 @@ const Dashboard: React.FC<DashboardProps> = ({ savedMajorIds, studentProfile, on
           ].map((item, idx) => (
             <div key={idx} className={`relative p-8 rounded-[2.5rem] border transition-all flex flex-col h-full ${
               item.status === 'completed' ? 'bg-green-50 border-green-100' :
-              item.status === 'current' ? 'bg-white border-[#4F46E5] shadow-xl shadow-indigo-900/5 ring-4 ring-indigo-50' :
+              item.status === 'current' ? 'bg-white border-primary shadow-xl shadow-primary-dark/5 ring-4 ring-primary-50' :
               'bg-slate-50 border-slate-100 opacity-60 grayscale'
             }`}>
               <div className={`w-12 h-12 rounded-2xl flex items-center justify-center mb-6 ${
                 item.status === 'completed' ? 'bg-green-500 text-white' :
-                item.status === 'current' ? 'bg-[#4F46E5] text-white' : 'bg-slate-200 text-slate-400'
+                item.status === 'current' ? 'bg-primary text-white' : 'bg-slate-200 text-slate-400'
               }`}>
                 <item.icon className="w-6 h-6" />
               </div>
@@ -810,7 +810,7 @@ const Dashboard: React.FC<DashboardProps> = ({ savedMajorIds, studentProfile, on
                  {item.status === 'completed' ? (
                    <span className="flex items-center gap-2 text-green-600 font-black text-xs uppercase tracking-widest"><CheckCircle className="w-4 h-4" /> Đã hoàn thành</span>
                  ) : item.status === 'current' ? (
-                   <button className="w-full py-3 bg-[#4F46E5] text-white rounded-xl font-black text-xs uppercase tracking-widest hover:scale-105 transition-transform">Tiếp tục học</button>
+                   <button className="w-full py-3 bg-primary text-white rounded-xl font-black text-xs uppercase tracking-widest hover:scale-105 transition-transform">Tiếp tục học</button>
                  ) : (
                    <span className="flex items-center gap-2 text-slate-400 font-black text-xs uppercase tracking-widest"><Lock className="w-4 h-4" /> Đang khóa</span>
                  )}
@@ -825,10 +825,10 @@ const Dashboard: React.FC<DashboardProps> = ({ savedMajorIds, studentProfile, on
   const renderUpgrade = () => (
     <div className="max-w-5xl mx-auto space-y-16 animate-in fade-in slide-in-from-bottom-4 duration-500 pb-20">
       <div className="text-center space-y-6">
-        <div className="inline-flex items-center gap-2 bg-orange-50 px-4 py-2 rounded-full border border-orange-100 text-[#FF8C00] text-xs font-black uppercase tracking-[0.2em]">
+        <div className="inline-flex items-center gap-2 bg-secondary-50 px-4 py-2 rounded-full border border-secondary-100 text-secondary text-xs font-black uppercase tracking-[0.2em]">
           <Zap className="w-4 h-4" /> Giới hạn là do bạn chọn
         </div>
-        <h2 className="text-5xl md:text-6xl font-[900] text-[#111E6C] tracking-tighter leading-tight">
+        <h2 className="text-5xl md:text-6xl font-[900] text-primary-dark tracking-tighter leading-tight">
           Mở khóa đặc quyền,<br />Kiến tạo tương lai rực rỡ
         </h2>
       </div>
@@ -841,8 +841,8 @@ const Dashboard: React.FC<DashboardProps> = ({ savedMajorIds, studentProfile, on
         ].map((benefit, i) => (
           <div key={i} className="bg-white p-8 rounded-[2.5rem] border border-slate-100 shadow-sm hover:shadow-xl transition-all group">
             <div className={`w-14 h-14 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform ${
-              benefit.color === 'blue' ? 'bg-blue-50 text-blue-600' : 
-              benefit.color === 'orange' ? 'bg-orange-50 text-orange-600' : 'bg-purple-50 text-purple-600'
+              benefit.color === 'blue' ? 'bg-primary-50 text-primary' : 
+              benefit.color === 'orange' ? 'bg-secondary-50 text-secondary' : 'bg-primary-100 text-primary-dark'
             }`}>
               <benefit.icon className="w-7 h-7" />
             </div>
@@ -852,10 +852,10 @@ const Dashboard: React.FC<DashboardProps> = ({ savedMajorIds, studentProfile, on
         ))}
       </div>
 
-      <div className="bg-[#111E6C] rounded-[3rem] p-12 md:p-16 text-center text-white w-full relative overflow-hidden shadow-2xl shadow-blue-900/20">
+      <div className="bg-primary-dark rounded-[3rem] p-12 md:p-16 text-center text-white w-full relative overflow-hidden shadow-2xl shadow-primary-dark/20">
         <div className="relative z-10 space-y-8">
           <h3 className="text-3xl md:text-4xl font-[900]">Chỉ 1.500 VNĐ / ngày</h3>
-          <button className="bg-[#FF8C00] text-white px-12 py-5 rounded-2xl font-black text-xl hover:scale-105 transition-all shadow-xl shadow-orange-500/30">
+          <button className="bg-secondary text-white px-12 py-5 rounded-2xl font-black text-xl hover:scale-105 transition-all shadow-xl shadow-secondary/30">
             Nâng cấp PRO ngay
           </button>
         </div>
@@ -874,7 +874,7 @@ const Dashboard: React.FC<DashboardProps> = ({ savedMajorIds, studentProfile, on
 
       <section className="bg-white p-10 rounded-[2.5rem] border border-slate-200/60 shadow-sm space-y-8">
         <div className="flex items-center gap-4">
-          <div className="w-12 h-12 rounded-2xl bg-indigo-50 text-[#4F46E5] flex items-center justify-center">
+          <div className="w-12 h-12 rounded-2xl bg-primary-50 text-primary flex items-center justify-center">
             <CircleUser className="w-7 h-7" />
           </div>
           <h3 className="text-2xl font-[900] text-slate-900">Thông tin cá nhân</h3>
@@ -884,7 +884,7 @@ const Dashboard: React.FC<DashboardProps> = ({ savedMajorIds, studentProfile, on
             <div className="w-32 h-32 rounded-[2.5rem] bg-slate-100 border-4 border-white shadow-xl overflow-hidden">
               <img src={editProfile.avatar} className="w-full h-full object-cover" alt="Avatar" />
             </div>
-            <button className="absolute -bottom-2 -right-2 w-10 h-10 bg-white rounded-xl shadow-lg border border-slate-100 flex items-center justify-center text-slate-600 hover:text-[#FF8C00] transition-all">
+            <button className="absolute -bottom-2 -right-2 w-10 h-10 bg-white rounded-xl shadow-lg border border-slate-100 flex items-center justify-center text-slate-600 hover:text-secondary transition-all">
               <Camera className="w-5 h-5" />
             </button>
           </div>
@@ -895,7 +895,7 @@ const Dashboard: React.FC<DashboardProps> = ({ savedMajorIds, studentProfile, on
                 type="text" 
                 value={editProfile.name}
                 onChange={(e) => setEditProfile({...editProfile, name: e.target.value})}
-                className="w-full px-6 py-4 rounded-2xl bg-slate-50 border border-slate-100 focus:ring-4 ring-indigo-50 focus:bg-white transition-all outline-none font-bold text-slate-700" 
+                className="w-full px-6 py-4 rounded-2xl bg-slate-50 border border-slate-100 focus:ring-4 ring-primary-50 focus:bg-white transition-all outline-none font-bold text-slate-700" 
               />
             </div>
             <div className="space-y-2">
@@ -904,7 +904,7 @@ const Dashboard: React.FC<DashboardProps> = ({ savedMajorIds, studentProfile, on
                 type="email" 
                 value={editProfile.email}
                 onChange={(e) => setEditProfile({...editProfile, email: e.target.value})}
-                className="w-full px-6 py-4 rounded-2xl bg-slate-50 border border-slate-100 focus:ring-4 ring-indigo-50 focus:bg-white transition-all outline-none font-bold text-slate-700" 
+                className="w-full px-6 py-4 rounded-2xl bg-slate-50 border border-slate-100 focus:ring-4 ring-primary-50 focus:bg-white transition-all outline-none font-bold text-slate-700" 
               />
             </div>
             <div className="space-y-2">
@@ -913,7 +913,7 @@ const Dashboard: React.FC<DashboardProps> = ({ savedMajorIds, studentProfile, on
                 type="text" 
                 value={editProfile.school}
                 onChange={(e) => setEditProfile({...editProfile, school: e.target.value})}
-                className="w-full px-6 py-4 rounded-2xl bg-slate-50 border border-slate-100 focus:ring-4 ring-indigo-50 focus:bg-white transition-all outline-none font-bold text-slate-700" 
+                className="w-full px-6 py-4 rounded-2xl bg-slate-50 border border-slate-100 focus:ring-4 ring-primary-50 focus:bg-white transition-all outline-none font-bold text-slate-700" 
               />
             </div>
             <div className="space-y-2">
@@ -921,7 +921,7 @@ const Dashboard: React.FC<DashboardProps> = ({ savedMajorIds, studentProfile, on
               <select 
                 value={editProfile.grade}
                 onChange={(e) => setEditProfile({...editProfile, grade: e.target.value})}
-                className="w-full px-6 py-4 rounded-2xl bg-slate-50 border border-slate-100 focus:ring-4 ring-indigo-50 focus:bg-white transition-all outline-none font-bold text-slate-700 appearance-none"
+                className="w-full px-6 py-4 rounded-2xl bg-slate-50 border border-slate-100 focus:ring-4 ring-primary-50 focus:bg-white transition-all outline-none font-bold text-slate-700 appearance-none"
               >
                 <option>Lớp 10</option>
                 <option>Lớp 11</option>
@@ -935,7 +935,7 @@ const Dashboard: React.FC<DashboardProps> = ({ savedMajorIds, studentProfile, on
         <button 
           onClick={handleSaveProfile}
           disabled={isSaving}
-          className="flex-1 bg-[#4F46E5] text-white py-5 rounded-[2rem] font-black text-lg flex items-center justify-center gap-3 hover:shadow-2xl hover:shadow-indigo-900/20 transition-all active:scale-95 shadow-xl shadow-indigo-900/10 disabled:opacity-50"
+          className="flex-1 bg-primary text-white py-5 rounded-[2rem] font-black text-lg flex items-center justify-center gap-3 hover:shadow-2xl hover:shadow-primary-dark/20 transition-all active:scale-95 shadow-xl shadow-primary-dark/10 disabled:opacity-50"
         >
           {isSaving ? (
             <div className="w-6 h-6 border-4 border-white border-t-transparent rounded-full animate-spin"></div>
@@ -954,7 +954,7 @@ const Dashboard: React.FC<DashboardProps> = ({ savedMajorIds, studentProfile, on
       <aside className="w-[260px] bg-white border-r border-gray-200 hidden lg:flex flex-col fixed inset-y-0 left-0 z-40">
         <div className="p-8">
           <div className="flex items-center gap-3 mb-10 cursor-pointer hover:opacity-80 transition-opacity" onClick={() => onNavigate('home')}>
-            <div className="w-10 h-10 rounded-xl bg-indigo-600 flex items-center justify-center shadow-lg shadow-indigo-200">
+            <div className="w-10 h-10 rounded-xl bg-primary flex items-center justify-center shadow-lg shadow-primary-100">
               <BrainCircuit className="text-white w-6 h-6" />
             </div>
             <span className="text-xl font-bold tracking-tight text-gray-900">Orie Map</span>
@@ -973,11 +973,11 @@ const Dashboard: React.FC<DashboardProps> = ({ savedMajorIds, studentProfile, on
                 onClick={() => setActiveTab(item.id as any)}
                 className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold transition-all duration-200 ${
                   activeTab === item.id 
-                    ? 'bg-indigo-50 text-indigo-600' 
+                    ? 'bg-primary-50 text-primary' 
                     : 'text-gray-500 hover:bg-gray-50 hover:text-gray-900'
                 }`}
               >
-                <item.icon className={`w-5 h-5 ${activeTab === item.id ? 'text-indigo-600' : 'text-gray-400'}`} />
+                <item.icon className={`w-5 h-5 ${activeTab === item.id ? 'text-primary' : 'text-gray-400'}`} />
                 {item.label}
               </button>
             ))}
@@ -992,12 +992,12 @@ const Dashboard: React.FC<DashboardProps> = ({ savedMajorIds, studentProfile, on
         </div>
 
         <div className="mt-auto p-6 border-t border-gray-100">
-          <div className="bg-indigo-600 rounded-2xl p-5 text-white mb-6">
+          <div className="bg-primary rounded-2xl p-5 text-white mb-6">
             <p className="text-xs font-bold uppercase tracking-widest opacity-70 mb-1">Gói Pro</p>
             <p className="text-sm font-bold mb-4">Mở khóa full tiềm năng AI của bạn</p>
             <button 
               onClick={() => setActiveTab('upgrade')}
-              className="w-full py-2.5 bg-white text-indigo-600 rounded-xl font-bold text-xs hover:bg-indigo-50 transition-colors"
+              className="w-full py-2.5 bg-white text-primary rounded-xl font-bold text-xs hover:bg-primary-50 transition-colors"
             >
               Nâng cấp ngay
             </button>
@@ -1040,12 +1040,12 @@ const Dashboard: React.FC<DashboardProps> = ({ savedMajorIds, studentProfile, on
             </div>
             <div className="flex items-center gap-4">
               <div className="flex items-center gap-3 px-4 py-2 bg-white rounded-2xl border border-gray-200 shadow-sm">
-                <div className="w-8 h-8 rounded-full bg-indigo-100 flex items-center justify-center text-indigo-600 font-bold text-xs">
+                <div className="w-8 h-8 rounded-full bg-primary-50 flex items-center justify-center text-primary font-bold text-xs">
                   {studentProfile.name.charAt(0)}
                 </div>
                 <span className="text-sm font-bold text-gray-700">{studentProfile.name}</span>
               </div>
-              <button className="p-3 bg-white rounded-2xl border border-gray-200 text-gray-400 hover:text-indigo-600 transition-all shadow-sm relative">
+              <button className="p-3 bg-white rounded-2xl border border-gray-200 text-gray-400 hover:text-primary transition-all shadow-sm relative">
                 <Bell className="w-6 h-6" />
                 <span className="absolute top-3 right-3 w-2.5 h-2.5 bg-rose-500 rounded-full border-2 border-white"></span>
               </button>

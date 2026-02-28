@@ -36,11 +36,11 @@ const AIRoadmap: React.FC = () => {
   return (
     <div className="max-w-6xl mx-auto px-4 py-8 md:py-20 space-y-8 md:space-y-16 animate-in fade-in duration-700">
       <div className="text-center space-y-4 md:space-y-6">
-        <div className="inline-flex items-center gap-2 px-4 py-2 bg-indigo-50 text-indigo-600 rounded-full text-xs font-black uppercase tracking-widest mb-2">
+        <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary-50 text-primary rounded-full text-xs font-black uppercase tracking-widest mb-2">
           <Sparkles className="w-4 h-4" /> AI Powered Career Planning
         </div>
         <h1 className="text-4xl md:text-6xl lg:text-7xl font-black text-slate-900 tracking-tighter leading-tight">
-          Lộ trình <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-500">Chiến lược</span>
+          Lộ trình <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">Chiến lược</span>
         </h1>
         <p className="text-slate-500 max-w-2xl mx-auto text-base md:text-xl font-medium opacity-80">
           Dựa trên dữ liệu thực tế và AI, chúng tôi thiết kế bản đồ thành công dành riêng cho bạn.
@@ -49,14 +49,14 @@ const AIRoadmap: React.FC = () => {
 
       {!roadmap ? (
         <div className="bg-white p-6 md:p-12 rounded-[2rem] md:rounded-[3.5rem] border border-slate-200/60 shadow-2xl max-w-2xl mx-auto relative group overflow-hidden">
-          <div className="absolute -inset-1 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-[3.5rem] blur opacity-5 group-hover:opacity-10 transition duration-1000"></div>
+          <div className="absolute -inset-1 bg-gradient-to-r from-primary to-secondary rounded-[3.5rem] blur opacity-5 group-hover:opacity-10 transition duration-1000"></div>
           <form onSubmit={handleSubmit} className="relative space-y-8 md:space-y-10">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div className="space-y-3">
                 <label className="text-xs font-black text-slate-400 uppercase tracking-widest ml-1">Lớp hiện tại</label>
                 <div className="relative">
                   <select 
-                    className="w-full p-5 pl-6 rounded-2xl border border-slate-200 bg-slate-50 outline-none focus:ring-8 ring-indigo-50 focus:bg-white transition-all appearance-none font-black text-slate-700 text-base"
+                    className="w-full p-5 pl-6 rounded-2xl border border-slate-200 bg-slate-50 outline-none focus:ring-8 ring-primary-50 focus:bg-white transition-all appearance-none font-black text-slate-700 text-base"
                     value={formData.grade}
                     onChange={(e) => setFormData({...formData, grade: e.target.value})}
                   >
@@ -71,7 +71,7 @@ const AIRoadmap: React.FC = () => {
                 <label className="text-xs font-black text-slate-400 uppercase tracking-widest ml-1">Học lực</label>
                 <div className="relative">
                   <select 
-                    className="w-full p-5 pl-6 rounded-2xl border border-slate-200 bg-slate-50 outline-none focus:ring-8 ring-indigo-50 focus:bg-white transition-all appearance-none font-black text-slate-700 text-base"
+                    className="w-full p-5 pl-6 rounded-2xl border border-slate-200 bg-slate-50 outline-none focus:ring-8 ring-primary-50 focus:bg-white transition-all appearance-none font-black text-slate-700 text-base"
                     value={formData.performance}
                     onChange={(e) => setFormData({...formData, performance: e.target.value})}
                   >
@@ -89,7 +89,7 @@ const AIRoadmap: React.FC = () => {
               <input 
                 type="text" 
                 placeholder="VD: Khoa học máy tính, Y đa khoa..."
-                className="w-full p-5 pl-8 rounded-2xl border border-slate-200 bg-slate-50 outline-none focus:ring-8 ring-indigo-50 focus:bg-white transition-all font-black text-slate-700 placeholder:text-slate-300 text-base"
+                className="w-full p-5 pl-8 rounded-2xl border border-slate-200 bg-slate-50 outline-none focus:ring-8 ring-primary-50 focus:bg-white transition-all font-black text-slate-700 placeholder:text-slate-300 text-base"
                 required
                 value={formData.major}
                 onChange={(e) => setFormData({...formData, major: e.target.value})}
@@ -101,7 +101,7 @@ const AIRoadmap: React.FC = () => {
               <input 
                 type="text" 
                 placeholder="VD: ĐH Bách Khoa, ĐH Ngoại Thương..."
-                className="w-full p-5 pl-8 rounded-2xl border border-slate-200 bg-slate-50 outline-none focus:ring-8 ring-indigo-50 focus:bg-white transition-all font-black text-slate-700 placeholder:text-slate-300 text-base"
+                className="w-full p-5 pl-8 rounded-2xl border border-slate-200 bg-slate-50 outline-none focus:ring-8 ring-primary-50 focus:bg-white transition-all font-black text-slate-700 placeholder:text-slate-300 text-base"
                 required
                 value={formData.school}
                 onChange={(e) => setFormData({...formData, school: e.target.value})}
@@ -111,7 +111,7 @@ const AIRoadmap: React.FC = () => {
             <button 
               type="submit"
               disabled={loading}
-              className="w-full bg-indigo-600 text-white py-5 rounded-2xl font-black text-lg hover:shadow-2xl hover:shadow-indigo-500/30 transition-all flex items-center justify-center gap-3 disabled:opacity-50 active:scale-95 shadow-xl shadow-indigo-500/10"
+              className="w-full bg-primary text-white py-5 rounded-2xl font-black text-lg hover:shadow-2xl hover:shadow-primary/30 transition-all flex items-center justify-center gap-3 disabled:opacity-50 active:scale-95 shadow-xl shadow-primary/10"
             >
               {loading ? (
                 <><Loader2 className="w-6 h-6 animate-spin" /> Đang phân tích lộ trình...</>
@@ -125,7 +125,7 @@ const AIRoadmap: React.FC = () => {
         <div className="space-y-10 animate-in fade-in slide-in-from-bottom-8 duration-700">
           <div className="flex flex-col md:flex-row justify-between items-center bg-white p-6 md:p-8 rounded-[2.5rem] border border-slate-200 shadow-sm gap-6">
             <div className="flex items-center gap-4">
-              <div className="w-12 h-12 bg-indigo-600 rounded-2xl flex items-center justify-center text-white shadow-lg shadow-indigo-600/20">
+              <div className="w-12 h-12 bg-primary rounded-2xl flex items-center justify-center text-white shadow-lg shadow-primary/20">
                 <Target className="w-6 h-6" />
               </div>
               <div>
@@ -135,7 +135,7 @@ const AIRoadmap: React.FC = () => {
             </div>
             <button 
               onClick={() => setRoadmap(null)} 
-              className="w-full md:w-auto text-xs font-black text-indigo-600 uppercase tracking-widest hover:bg-indigo-50 px-8 py-4 rounded-2xl transition-all border border-indigo-100"
+              className="w-full md:w-auto text-xs font-black text-primary uppercase tracking-widest hover:bg-primary-50 px-8 py-4 rounded-2xl transition-all border border-primary-100"
             >
               Thiết lập lại
             </button>
@@ -146,14 +146,14 @@ const AIRoadmap: React.FC = () => {
               {/* Timeline Milestones */}
               <div className="bg-white rounded-[2.5rem] border border-slate-200 p-8 md:p-10 shadow-sm">
                 <h3 className="text-lg font-black text-slate-900 mb-8 flex items-center gap-3 uppercase tracking-widest">
-                  <Activity className="w-5 h-5 text-indigo-600" /> Các cột mốc quan trọng
+                  <Activity className="w-5 h-5 text-primary" /> Các cột mốc quan trọng
                 </h3>
                 <div className="space-y-8 relative before:absolute before:left-[11px] before:top-2 before:bottom-2 before:w-0.5 before:bg-slate-100">
                   {roadmap.milestones.map((milestone: any, idx: number) => (
                     <div key={idx} className="relative pl-10 group">
-                      <div className="absolute left-0 top-1.5 w-6 h-6 rounded-full bg-white border-4 border-indigo-600 z-10 group-hover:scale-125 transition-transform"></div>
+                      <div className="absolute left-0 top-1.5 w-6 h-6 rounded-full bg-white border-4 border-primary z-10 group-hover:scale-125 transition-transform"></div>
                       <div className="space-y-1">
-                        <span className="text-[10px] font-black text-indigo-600 uppercase tracking-widest">{milestone.time}</span>
+                        <span className="text-[10px] font-black text-primary uppercase tracking-widest">{milestone.time}</span>
                         <p className="text-base md:text-lg font-black text-slate-800 leading-tight">{milestone.task}</p>
                       </div>
                     </div>
@@ -165,11 +165,11 @@ const AIRoadmap: React.FC = () => {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div className="bg-white rounded-[2.5rem] border border-slate-200 p-8 shadow-sm">
                   <h3 className="text-sm font-black text-slate-900 mb-6 flex items-center gap-3 uppercase tracking-widest">
-                    <BookOpen className="w-4 h-4 text-indigo-600" /> Môn học trọng tâm
+                    <BookOpen className="w-4 h-4 text-primary" /> Môn học trọng tâm
                   </h3>
                   <div className="flex flex-wrap gap-2">
                     {roadmap.focusSubjects.map((subject: string, i: number) => (
-                      <span key={i} className="px-4 py-2 bg-indigo-50 text-indigo-600 rounded-xl text-xs font-black border border-indigo-100/50">
+                      <span key={i} className="px-4 py-2 bg-primary-50 text-primary rounded-xl text-xs font-black border border-primary-100/50">
                         {subject}
                       </span>
                     ))}
@@ -177,11 +177,11 @@ const AIRoadmap: React.FC = () => {
                 </div>
                 <div className="bg-white rounded-[2.5rem] border border-slate-200 p-8 shadow-sm">
                   <h3 className="text-sm font-black text-slate-900 mb-6 flex items-center gap-3 uppercase tracking-widest">
-                    <CheckCircle2 className="w-4 h-4 text-purple-600" /> Kỹ năng cần có
+                    <CheckCircle2 className="w-4 h-4 text-secondary" /> Kỹ năng cần có
                   </h3>
                   <div className="flex flex-wrap gap-2">
                     {roadmap.softSkills.map((skill: string, i: number) => (
-                      <span key={i} className="px-4 py-2 bg-purple-50 text-purple-600 rounded-xl text-xs font-black border border-purple-100/50">
+                      <span key={i} className="px-4 py-2 bg-secondary-50 text-secondary rounded-xl text-xs font-black border border-secondary-100/50">
                         {skill}
                       </span>
                     ))}
@@ -194,7 +194,7 @@ const AIRoadmap: React.FC = () => {
               {/* Radar Chart */}
               <div className="bg-white rounded-[2.5rem] border border-slate-200 p-8 shadow-sm h-fit">
                 <h3 className="text-sm font-black text-slate-900 mb-6 flex items-center gap-3 uppercase tracking-widest">
-                  <BarChart3 className="w-4 h-4 text-indigo-600" /> Phân tích năng lực
+                  <BarChart3 className="w-4 h-4 text-primary" /> Phân tích năng lực
                 </h3>
                 <div className="h-64 w-full">
                   <ResponsiveContainer width="100%" height="100%">
@@ -218,7 +218,7 @@ const AIRoadmap: React.FC = () => {
               </div>
 
               {/* AI Advice */}
-              <div className="bg-indigo-600 rounded-[2.5rem] p-8 text-white shadow-xl shadow-indigo-600/20 relative overflow-hidden group">
+              <div className="bg-primary rounded-[2.5rem] p-8 text-white shadow-xl shadow-primary/20 relative overflow-hidden group">
                 <Sparkles className="absolute -right-4 -top-4 w-24 h-24 text-white/10 rotate-12 group-hover:rotate-45 transition-transform duration-1000" />
                 <h3 className="text-sm font-black mb-4 flex items-center gap-3 uppercase tracking-widest">
                   <Lightbulb className="w-4 h-4" /> Lời khuyên từ Orie AI

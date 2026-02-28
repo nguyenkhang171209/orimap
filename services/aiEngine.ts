@@ -10,6 +10,11 @@ export interface StudentProfile {
 
 export interface SuitabilityResult {
   totalScore: number;
+  admissionProbability: number;
+  riskAnalysis: {
+    level: 'Thấp' | 'Trung bình' | 'Cao' | 'Rất cao';
+    factors: string[];
+  };
   breakdown: {
     academic: number;
     skills: number;
@@ -49,14 +54,60 @@ export class OriMapAIEngine {
     if (totalScore >= 80) category = 'Phù hợp cao';
     else if (totalScore >= 60) category = 'Phù hợp tiềm năng';
 
-    const explanation = this.generateExplanation(totalScore, { academic, skills, interests, trend, risk }, major);
+    const admissionProbability = this.calculateAdmissionProbability(student, major);
+    const riskAnalysis = this.generateRiskAnalysis(student, major, { academic, skills, interests, trend, risk });
+    const explanation = this.generateExplanation(totalScore, { academic, skills, interests, trend, risk }, major, admissionProbability);
 
     return {
       totalScore,
+      admissionProbability,
+      riskAnalysis,
       breakdown: { academic, skills, interests, trend, risk },
       category,
       explanation
     };
+  }
+
+  private calculateAdmissionProbability(student: StudentProfile, major: Major): number {
+    const diff = student.predictedExamScore - major.score;
+    if (diff >= 2) return 95;
+    if (diff >= 1) return 85;
+    if (diff >= 0) return 70;
+    if (diff >= -1) return 40;
+    if (diff >= -2) return 15;
+    return 5;
+  }
+
+  private generateRiskAnalysis(student: StudentProfile, major: Major, breakdown: any): { level: 'Thấp' | 'Trung bình' | 'Cao' | 'Rất cao', factors: string[] } {
+    const factors: string[] = [];
+    let riskScore = 0;
+
+    const diff = student.predictedExamScore - major.score;
+    if (diff < 0) {
+      factors.push(`Điểm dự kiến (${student.predictedExamScore}) thấp hơn điểm chuẩn năm ngoái (${major.score}).`);
+      riskScore += Math.abs(diff) * 20;
+    }
+
+    if (breakdown.skills < 60) {
+      factors.push(`Thiếu hụt kỹ năng cốt lõi yêu cầu cho ngành ${major.majorName}.`);
+      riskScore += 30;
+    }
+
+    if (major.aiRisk === 'high') {
+      factors.push(`Ngành học có nguy cơ cao bị tự động hóa bởi AI trong tương lai.`);
+      riskScore += 20;
+    }
+
+    let level: 'Thấp' | 'Trung bình' | 'Cao' | 'Rất cao' = 'Thấp';
+    if (riskScore >= 70) level = 'Rất cao';
+    else if (riskScore >= 40) level = 'Cao';
+    else if (riskScore >= 20) level = 'Trung bình';
+
+    if (factors.length === 0) {
+      factors.push("Không phát hiện rủi ro đáng kể. Lựa chọn an toàn.");
+    }
+
+    return { level, factors };
   }
 
   private calculateAcademicMatch(student: StudentProfile, major: Major): number {
@@ -124,8 +175,8 @@ export class OriMapAIEngine {
     return Math.max(0, 100 + diff * 15);
   }
 
-  private generateExplanation(total: number, breakdown: any, major: Major): string {
-    let text = `Dựa trên phân tích AI, ngành ${major.majorName} có mức độ phù hợp ${total}%. `;
+  private generateExplanation(total: number, breakdown: any, major: Major, admissionProbability: number): string {
+    let text = `Dựa trên phân tích AI, ngành ${major.majorName} có mức độ phù hợp nghề nghiệp là ${total}%. `;
     
     if (breakdown.academic > 85) {
       text += "Bạn có nền tảng học thuật cực kỳ vững chắc cho tổ hợp xét tuyển của ngành này. ";
@@ -133,8 +184,14 @@ export class OriMapAIEngine {
       text += "Điểm các môn tổ hợp của bạn hiện đang thấp hơn mức kỳ vọng, cần tập trung cải thiện. ";
     }
 
-    if (breakdown.risk < 50) {
-      text += "Tuy nhiên, điểm chuẩn dự kiến của ngành này đang cao hơn năng lực hiện tại của bạn, đây là một lựa chọn mạo hiểm. ";
+    if (breakdown.skills > 80) {
+      text += "Kỹ năng mềm và tư duy của bạn rất phù hợp với đặc thù công việc. ";
+    }
+
+    if (admissionProbability >= 70) {
+      text += `Xác suất trúng tuyển dự kiến khá an toàn (${admissionProbability}%). `;
+    } else if (admissionProbability < 40) {
+      text += `Xác suất trúng tuyển thấp (${admissionProbability}%), đây là một lựa chọn mạo hiểm cần có phương án dự phòng. `;
     }
 
     if (breakdown.trend > 80) {
