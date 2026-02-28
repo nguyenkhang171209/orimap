@@ -198,7 +198,7 @@ const CareerMentor: React.FC<{ onNavigate?: (page: string) => void }> = ({ onNav
     try {
       // Get context from localStorage
       const savedProfile = localStorage.getItem('orie_student_profile');
-      const studentProfile: StudentProfile = savedProfile ? JSON.parse(savedProfile) : {
+      const studentProfile: any = savedProfile ? JSON.parse(savedProfile) : {
         grades: { 'Toán': 8.0, 'Văn': 7.5, 'Anh': 8.0 },
         skills: {},
         interests: [],
@@ -345,7 +345,7 @@ const CareerMentor: React.FC<{ onNavigate?: (page: string) => void }> = ({ onNav
     try {
       // Get context from localStorage
       const savedProfile = localStorage.getItem('orie_student_profile');
-      const studentProfile: StudentProfile = savedProfile ? JSON.parse(savedProfile) : {
+      const studentProfile: any = savedProfile ? JSON.parse(savedProfile) : {
         grades: { 'Toán': 8.0, 'Văn': 7.5, 'Anh': 8.0 },
         skills: {},
         interests: [],
